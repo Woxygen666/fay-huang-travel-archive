@@ -66,10 +66,17 @@ export default function Home() {
     let frame = 0;
 
     const renderLight = () => {
-      currentX += (targetX - currentX) * 0.055;
-      currentY += (targetY - currentY) * 0.055;
-      hero.style.setProperty("--pointer-x", currentX.toFixed(4));
-      hero.style.setProperty("--pointer-y", currentY.toFixed(4));
+      currentX += (targetX - currentX) * 0.065;
+      currentY += (targetY - currentY) * 0.065;
+      hero.style.setProperty("--sky-x", `${(-currentX * 18).toFixed(2)}px`);
+      hero.style.setProperty("--sky-y", `${(-currentY * 11).toFixed(2)}px`);
+      hero.style.setProperty("--ray-x", `${(currentX * 18).toFixed(2)}px`);
+      hero.style.setProperty("--ray-y", `${(currentY * 9).toFixed(2)}px`);
+      hero.style.setProperty("--ray-rotate", `${(currentX * 1.35).toFixed(3)}deg`);
+      hero.style.setProperty("--glow-x", `${(currentX * 1.8).toFixed(3)}%`);
+      hero.style.setProperty("--glow-y", `${(currentY * 1.1).toFixed(3)}%`);
+      hero.style.setProperty("--copy-x", `${(currentX * 5).toFixed(2)}px`);
+      hero.style.setProperty("--copy-y", `${(currentY * 3).toFixed(2)}px`);
       frame = window.requestAnimationFrame(renderLight);
     };
     const onMove = (event: PointerEvent) => {
@@ -125,6 +132,7 @@ export default function Home() {
 
       <section id="home" className="hero" ref={heroRef}>
         <div className="hero-sky-photo" style={{ backgroundImage: `url(${asset("/hero-sky-v2.jpg")})` }} aria-hidden="true" />
+        <div className="hero-cloud-drift" style={{ backgroundImage: `url(${asset("/hero-sky-v2.jpg")})` }} aria-hidden="true" />
         <div className="hero-light-field" aria-hidden="true" />
         <div className="hero-atmosphere" aria-hidden="true" />
         <div className="hero-film" aria-hidden="true" />
