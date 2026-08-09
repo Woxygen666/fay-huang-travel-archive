@@ -62,6 +62,20 @@ button { cursor:pointer; }
 .scroll-note i { width:45px; border-top:1px solid var(--ink); }
 .coordinates { position:absolute; z-index:3; right:4vw; bottom:4vh; font-size:8px; line-height:1.7; letter-spacing:1.3px; text-align:right; }
 
+.departure-sequence { --plane-y:86vh; --trail-height:8vh; --reveal-top:100%; --departure-copy:0; position:relative; height:220vh; background:#3f87aa; }
+.departure-sticky { position:sticky; top:0; height:100vh; overflow:hidden; isolation:isolate; background:linear-gradient(180deg,#2f789e,#5da0ba); }
+.departure-grid { position:absolute; inset:0; opacity:.09; background-image:linear-gradient(rgba(255,255,255,.45) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.45) 1px,transparent 1px); background-size:70px 70px; }
+.vertical-flight { position:absolute; z-index:4; left:50%; top:0; width:1px; height:100%; transform:translateX(-50%); }
+.vertical-flight span { position:absolute; z-index:2; left:50%; top:0; color:white; font-size:52px; line-height:1; transform:translate(-50%,var(--plane-y)) rotate(-90deg); filter:drop-shadow(0 5px 12px rgba(20,59,86,.2)); will-change:transform; }
+.vertical-flight i { position:absolute; left:50%; bottom:0; width:7px; height:var(--trail-height); transform:translateX(-50%); border-radius:50% 50% 0 0; background:linear-gradient(90deg,rgba(255,255,255,.38),#fff 45% 58%,rgba(255,255,255,.38)); box-shadow:0 0 24px rgba(255,255,255,.7); will-change:height; }
+.departure-copy { position:absolute; z-index:2; left:7vw; top:50%; color:#f8f2df; opacity:var(--departure-copy); transform:translateY(calc(-50% + 25px)); }
+.departure-copy small,.departure-copy em { display:block; font-size:8px; letter-spacing:3px; font-style:normal; }
+.departure-copy strong { display:block; margin:18px 0; font-family:Georgia,serif; font-size:clamp(38px,6vw,84px); line-height:.87; font-weight:normal; letter-spacing:-3px; }
+.map-curtain { position:absolute; z-index:1; inset:0; display:grid; place-items:center; clip-path:inset(var(--reveal-top) 0 0 0); background:var(--paper); color:var(--ink); will-change:clip-path; }
+.map-curtain:before { content:""; position:absolute; inset:0; opacity:.16; background:radial-gradient(circle at 50% 55%,#fff 0 20%,transparent 55%),repeating-linear-gradient(0deg,transparent 0 8px,rgba(20,59,86,.08) 9px); }
+.map-curtain p { margin:0; text-align:center; font-family:Georgia,serif; font-size:clamp(70px,14vw,190px); line-height:.7; letter-spacing:-9px; }
+.map-curtain span { font-size:clamp(18px,3vw,38px); letter-spacing:1px; font-style:italic; color:var(--orange); }
+
 .section { padding:110px 6vw; position:relative; overflow:hidden; }
 .section-title { max-width:1180px; margin:0 auto 70px; display:grid; grid-template-columns:50px 1fr auto; align-items:start; }
 .section-title > span { width:35px; height:35px; border:1px solid; border-radius:50%; display:grid; place-items:center; font-size:9px; }
@@ -70,10 +84,18 @@ button { cursor:pointer; }
 .section-title h2 em { color:var(--orange); font-weight:normal; }
 .section-title > i { width:120px; border-top:1px solid; opacity:.35; margin-top:15px; }
 
-.map-section { background:var(--paper); }
+.map-section { background:var(--paper); padding-top:95px; }
+.atlas-tabs { max-width:1180px; margin:-25px auto 35px; display:flex; align-items:end; gap:8px; border-bottom:1px solid rgba(20,59,86,.32); }
+.atlas-tabs button { border:1px solid rgba(20,59,86,.35); border-bottom:0; background:#e4dac0; color:var(--ink); padding:14px 24px; font-size:9px; letter-spacing:1.6px; transform:translateY(1px); transition:.25s; }
+.atlas-tabs button span { margin-right:12px; color:var(--orange); }
+.atlas-tabs button.active { background:#b8ddeb; padding-top:19px; font-weight:bold; }
 .map-layout { max-width:1180px; margin:auto; display:grid; grid-template-columns:1fr 300px; gap:25px; align-items:stretch; }
 .map-board { aspect-ratio:1.64; min-height:575px; position:relative; background:#b8ddeb; border:1px solid rgba(20,59,86,.35); overflow:hidden; box-shadow:9px 10px 0 #d7c497; }
 .illustrated-map { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(.82) contrast(.96) brightness(1.04); }
+.china-board { background:#afd3df; }
+.china-board .illustrated-map { inset:4% 5% 2%; width:90%; height:94%; object-fit:contain; mix-blend-mode:multiply; filter:sepia(.2) hue-rotate(145deg) saturate(.72) contrast(1.05); opacity:.8; }
+.china-board:before { content:"CHINA TRAVEL LOG · 中国旅行档案"; position:absolute; z-index:2; top:18px; left:22px; font-family:Georgia,serif; font-size:14px; letter-spacing:2px; }
+.map-credit { position:absolute; z-index:5; right:10px; bottom:7px; font-size:6px; opacity:.45; }
 .map-board:after { content:""; position:absolute; inset:0; z-index:1; pointer-events:none; box-shadow:inset 0 0 55px rgba(24,55,66,.18); background:linear-gradient(105deg,rgba(255,250,240,.05),transparent 55%,rgba(20,59,86,.06)); }
 .map-grid { position:absolute; inset:0; z-index:2; opacity:.08; background-image:linear-gradient(rgba(20,59,86,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(20,59,86,.35) 1px,transparent 1px); background-size:70px 70px; }
 .route { position:absolute; z-index:3; height:80px; border-top:2px dashed rgba(223,118,80,.88); border-radius:50%; filter:drop-shadow(0 1px white); }
@@ -86,12 +108,32 @@ button { cursor:pointer; }
 .map-caption { position:absolute; z-index:4; bottom:25px; left:25px; display:flex; align-items:end; gap:8px; padding:10px 12px; background:rgba(247,240,223,.78); backdrop-filter:blur(4px); border:1px solid rgba(20,59,86,.25); }
 .map-caption small { writing-mode:vertical-rl; font-size:7px; letter-spacing:1px; }.map-caption b{font-family:Georgia,serif;font-size:54px;line-height:.8}.map-caption span{font-size:8px;letter-spacing:1px;line-height:1.4}
 .story-card { background:var(--cream); border:1px solid rgba(20,59,86,.35); padding:16px; position:relative; transform:rotate(1deg); box-shadow:5px 7px 0 rgba(20,59,86,.08); }
-.photo-placeholder { height:220px; background:linear-gradient(145deg,#94bed1,#dfeaec 65%,#e1c67f); display:grid; place-items:center; text-align:center; position:relative; overflow:hidden; }
-.photo-placeholder:after { content:""; position:absolute; width:180px;height:100px;border-radius:50%;background:#6594aa;bottom:-55px;right:-20px;transform:rotate(-10deg); }
-.photo-placeholder span { font-family:Georgia,serif; font-size:65px; color:rgba(255,255,255,.35); }.photo-placeholder small{position:absolute;bottom:12px;left:12px;font-size:7px;letter-spacing:1px;text-align:left}
+.story-photo { height:220px; position:relative; overflow:hidden; background:#9ec5d3; }
+.story-photo img { width:100%; height:100%; object-fit:cover; filter:saturate(.78) contrast(.98); }
+.story-photo:after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 55%,rgba(15,42,57,.48)); }
+.story-photo small { position:absolute; z-index:2; left:12px; bottom:10px; color:white; font-size:7px; letter-spacing:1px; }
 .stamp { position:absolute; right:5px; top:190px; width:75px; height:75px; border:2px solid var(--orange); color:var(--orange); border-radius:50%; display:grid; place-items:center; text-align:center; font-size:7px; transform:rotate(-14deg); }.stamp b{font-size:6px}
 .story-copy { padding:25px 8px 5px; }.story-copy h3{font-family:Georgia,serif;font-size:28px;line-height:1.05;margin:13px 0}.story-copy>p:not(.eyebrow){font-family:Georgia,serif;font-style:italic;font-size:12px;line-height:1.7;color:#496b7d}.story-copy button,.text-link{border:0;border-bottom:1px solid;background:none;padding:7px 0;font-size:8px;letter-spacing:1.5px;font-weight:bold}.story-copy button span{margin-left:8px}
 .city-tags{display:flex;flex-wrap:wrap;gap:6px;margin:13px 0 4px}.city-tags span{padding:5px 8px;border:1px solid rgba(20,59,86,.3);border-radius:20px;font-size:7px;letter-spacing:1px;background:#f7f0df}.text-link{text-decoration:none;display:inline-block}
+.atlas-index { max-width:1180px; margin:30px auto 0; display:flex; flex-wrap:wrap; gap:7px; }
+.atlas-index button { display:flex; gap:8px; align-items:center; padding:8px 12px; border:1px solid rgba(20,59,86,.25); border-radius:30px; background:rgba(255,255,255,.3); font-size:8px; transition:.2s; }
+.atlas-index button small { color:var(--orange); font-size:6px; }
+.atlas-index button.active { background:var(--ink); color:white; transform:translateY(-2px); }
+.visited-tape { max-width:1180px; margin:18px auto 0; padding:14px 16px; display:flex; flex-wrap:wrap; gap:9px 13px; align-items:center; border-top:1px dashed rgba(20,59,86,.35); border-bottom:1px dashed rgba(20,59,86,.35); font-size:8px; }
+.visited-tape b { color:var(--orange); letter-spacing:2px; margin-right:5px; }.visited-tape span{font-family:Georgia,serif;font-size:11px}
+
+.travel-gallery { --title-scale:.72; --title-opacity:0; --title-blur:8px; max-width:1180px; min-height:920px; margin:80px auto 0; position:relative; display:grid; place-items:center; isolation:isolate; }
+.gallery-depth-copy { position:sticky; top:38vh; z-index:0; align-self:start; width:100%; text-align:center; opacity:var(--title-opacity); transform:scale(var(--title-scale)); filter:blur(var(--title-blur)); transition:filter .2s; }
+.gallery-depth-copy small,.gallery-depth-copy em { display:block; font-size:8px; letter-spacing:3px; font-style:normal; }
+.gallery-depth-copy strong { display:block; font-family:Georgia,serif; font-weight:normal; font-size:clamp(85px,15vw,190px); line-height:.72; letter-spacing:-10px; color:#9cc6d5; text-transform:uppercase; }
+.gallery-depth-copy em { margin-top:20px; color:var(--orange); }
+.photo-scatter { position:absolute; z-index:2; inset:70px 7% 80px; display:grid; grid-template-columns:repeat(4,minmax(130px,1fr)); align-content:center; justify-content:center; gap:0; pointer-events:none; }
+.scatter-card { --angle:0deg; --scatter-x:0vw; --scatter-y:0px; margin:-35px -20px; padding:9px 9px 28px; background:#fffaf0; box-shadow:0 14px 30px rgba(24,55,66,.18); transform:translate3d(0,55px,0) rotate(0deg) scale(.78); opacity:.08; transition:transform .95s cubic-bezier(.16,1.18,.32,1),opacity .6s ease,box-shadow .45s; transition-delay:var(--delay); pointer-events:auto; will-change:transform; }
+.travel-gallery.is-scattered .scatter-card { transform:translate3d(var(--scatter-x),var(--scatter-y),0) rotate(var(--angle)) scale(1); opacity:1; }
+.travel-gallery.is-scattered .scatter-card:hover { z-index:10; transform:translate3d(var(--scatter-x),calc(var(--scatter-y) - 12px),0) rotate(var(--angle)) scale(1.1); box-shadow:0 24px 42px rgba(24,55,66,.28); transition-duration:.62s; }
+.scatter-card img { display:block; width:100%; height:190px; object-fit:cover; filter:saturate(.82) contrast(.98); }
+.scatter-card figcaption { display:grid; grid-template-columns:24px 1fr auto; gap:8px; align-items:end; padding-top:9px; font-family:Georgia,serif; font-size:12px; }
+.scatter-card figcaption span,.scatter-card figcaption small { font-family:Arial,sans-serif; font-size:6px; letter-spacing:1px; color:var(--orange); }
 
 .paper-section { background:#e7f1ef; }
 .passport-wrap { max-width:1050px; margin:auto; display:grid; grid-template-columns:1.8fr 1fr; gap:45px; align-items:center; }
@@ -113,4 +155,5 @@ button { cursor:pointer; }
 
 @media (max-width:900px){.map-layout,.passport-wrap{grid-template-columns:1fr}.story-card{max-width:430px;margin:auto}.works-grid{grid-template-columns:1fr 1fr}.project-list article{grid-template-columns:40px 1fr}.project-list article>b,.project-list article>button{grid-column:2}.postcard{margin-inline:2vw}.edition{display:none}}
 @media (max-width:640px){.topbar{height:62px}.destination-drawer{top:62px;height:calc(100vh - 62px)}.menu-button span{display:none}.hero{min-height:92vh}.hero-sky-photo{inset:-3%;background-position:58% 48%;transform:scale(1.04);animation-duration:30s}.hero-light-field{opacity:.16;transform:scale(1.04);filter:blur(16px)}.hero-film{opacity:.34}.hero h1{font-size:80px;letter-spacing:-5px}.hero-tags{gap:8px;font-size:7px}.section{padding:80px 20px}.section-title{grid-template-columns:40px 1fr;margin-bottom:45px}.section-title h2{font-size:42px;letter-spacing:-2px}.section-title>i{display:none}.map-board{min-height:430px}.map-caption{bottom:15px;left:15px}.passport-card{grid-template-columns:1fr;padding:28px}.passport-photo{width:150px;height:180px}.passport-info h3{font-size:38px}.works-grid{grid-template-columns:1fr}.work-visual{height:340px}.project-list article{gap:12px}.timeline-line{left:12px}.timeline article,.timeline article.right{width:100%;margin-left:0;padding:0 0 25px 45px;text-align:left}.timeline article>i,.timeline .left>i,.timeline .right>i{left:5px;right:auto}.suitcase{margin-top:40px}.suitcase-handle{width:130px;height:55px}.suitcase-inner{min-height:430px;padding:25px;gap:12px}.sticker{font-size:11px;padding:10px 13px}.postcard{grid-template-columns:1fr;padding:38px 27px}.postcard-left{border-right:0;border-bottom:1px solid;padding:15px 0 30px}.postcard h2{font-size:44px}.postcard-right{padding:145px 0 0}.destination-drawer nav button{grid-template-columns:30px 1fr 20px}.destination-drawer nav em{display:none}footer{flex-direction:column;gap:20px;text-align:center}.coordinates{display:none}}
+@media (max-width:640px){.departure-sequence{height:175vh}.vertical-flight span{font-size:42px}.departure-copy{left:24px;top:35%}.departure-copy strong{font-size:42px;letter-spacing:-2px}.map-curtain p{font-size:76px;letter-spacing:-5px}.atlas-tabs{margin-top:-15px;overflow-x:auto}.atlas-tabs button{white-space:nowrap;padding:12px 14px;font-size:7px}.atlas-tabs button.active{padding-top:16px}.china-board .illustrated-map{inset:7% 0 0;width:100%;height:90%}.china-board:before{font-size:9px;top:12px}.map-pin span{font-size:6px}.atlas-index{overflow-x:auto;flex-wrap:nowrap;padding-bottom:8px}.atlas-index button{flex:0 0 auto}.visited-tape{line-height:1.7}.travel-gallery{min-height:1050px;margin-top:55px}.gallery-depth-copy{top:42vh}.gallery-depth-copy strong{font-size:72px;letter-spacing:-5px}.photo-scatter{inset:80px 12% 70px;grid-template-columns:repeat(2,minmax(110px,1fr));align-content:center}.scatter-card{margin:-20px -16px;padding:7px 7px 23px}.scatter-card img{height:150px}.travel-gallery.is-scattered .scatter-card,.travel-gallery.is-scattered .scatter-card:hover{transform:translate3d(0,var(--scatter-y),0) rotate(var(--angle)) scale(.9)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}

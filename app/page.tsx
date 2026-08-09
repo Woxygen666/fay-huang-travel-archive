@@ -15,21 +15,40 @@ const destinations = [
   { id: "contact", no: "07", icon: "✉", title: "Contact", sub: "从这里寄出一封信" },
 ];
 
-const travelStops = [
-  { code: "UK", country: "英国", left: "51%", top: "29%", cities: ["Southampton"], note: "在这里学习时尚市场营销与品牌，也第一次真正把生活放进另一种文化里。" },
-  { code: "FR", country: "法国", left: "52%", top: "34%", cities: [], note: "照片、城市与当时的故事，正在整理进这本旅行档案。" },
-  { code: "IT", country: "意大利", left: "54%", top: "39%", cities: [], note: "照片、城市与当时的故事，正在整理进这本旅行档案。" },
-  { code: "AT", country: "奥地利", left: "55%", top: "32%", cities: [], note: "照片、城市与当时的故事，正在整理进这本旅行档案。" },
-  { code: "TR", country: "土耳其", left: "61%", top: "39%", cities: [], note: "照片、城市与当时的故事，正在整理进这本旅行档案。" },
-  { code: "MT", country: "马耳他", left: "54%", top: "43%", cities: [], note: "照片、城市与当时的故事，正在整理进这本旅行档案。" },
-  { code: "MA", country: "摩洛哥", left: "48%", top: "43%", cities: [], note: "照片、城市与当时的故事，正在整理进这本旅行档案。" },
-  { code: "GR", country: "希腊", left: "58%", top: "40%", cities: [], note: "照片、城市与当时的故事，正在整理进这本旅行档案。" },
-  { code: "IS", country: "冰岛", left: "44%", top: "23%", cities: [], note: "照片、城市与当时的故事，正在整理进这本旅行档案。" },
-  { code: "AU", country: "澳大利亚", left: "84%", top: "75%", cities: ["Sydney"], note: "南半球的阳光、海风和城市天际线，被收进了我关于自由的一页。" },
-  { code: "NZ", country: "新西兰", left: "93%", top: "81%", cities: [], note: "照片、城市与当时的故事，正在整理进这本旅行档案。" },
-  { code: "TH", country: "泰国", left: "77%", top: "55%", cities: ["Chiang Mai"], note: "第一次更确定：我喜欢独自旅行，也喜欢在陌生城市里重新认识自己。" },
-  { code: "JP", country: "日本", left: "88%", top: "38%", cities: [], note: "照片、城市与当时的故事，正在整理进这本旅行档案。" },
+type TravelPhoto = [number, string];
+type TravelStop = { code: string; country: string; left: string; top: string; cities: string[]; note: string; photos: TravelPhoto[] };
+
+const travelStops: TravelStop[] = [
+  { code: "UK", country: "英国", left: "51%", top: "29%", cities: ["巴斯", "伯恩茅斯", "约克", "伦敦", "怀特岛", "南安普顿", "剑桥", "朴茨茅斯"], note: "在这里完成硕士学习，也第一次真正把生活放进另一种文化里。", photos: [[64,"Durdle Door"],[65,"伦敦"],[66,"伦敦"],[67,"伯恩茅斯"],[68,"剑桥"],[69,"巴斯"],[70,"怀特岛"],[71,"朴茨茅斯"]] },
+  { code: "FR", country: "法国", left: "52%", top: "34%", cities: ["巴黎"], note: "巴黎让我记住：一座城市的品牌，藏在无数日常细节里。", photos: [[51,"巴黎"],[52,"巴黎"]] },
+  { code: "IT", country: "意大利", left: "54%", top: "39%", cities: ["佛罗伦萨", "罗马", "多洛米蒂 · Bolzano"], note: "从文艺复兴城市到多洛米蒂，风景本身就是最有力量的叙事。", photos: [[26,"佛罗伦萨"],[27,"多洛米蒂"],[28,"Bolzano"],[29,"罗马"],[30,"罗马"]] },
+  { code: "AT", country: "奥地利", left: "55%", top: "32%", cities: ["维也纳", "哈尔施塔特", "圣沃尔夫冈", "Salzburg"], note: "湖区、山谷与古典城市共同组成一段安静的欧洲夏天。", photos: [[15,"Salzburg"],[16,"阿尔卑斯山区"],[17,"阿尔卑斯山区"],[18,"奥地利湖区"],[19,"奥地利湖区"],[20,"奥地利湖区"]] },
+  { code: "TR", country: "土耳其", left: "61%", top: "39%", cities: ["伊斯坦布尔", "卡帕多奇亚", "安塔利亚", "费特希耶", "安卡拉", "伊兹密尔"], note: "横跨大陆的旅程，让历史、海岸和生活方式在同一条路线上相遇。", photos: [[6,"伊兹密尔"],[7,"伊斯坦布尔"],[8,"卡帕多奇亚"],[9,"卡帕多奇亚"],[10,"安卡拉"],[11,"安塔利亚"],[12,"棉花堡"],[13,"费特希耶"],[14,"鸽子谷"],[21,"安塔利亚"]] },
+  { code: "MT", country: "马耳他", left: "54%", top: "43%", cities: ["Malta"], note: "被地中海包围的岛屿，颜色像一卷被阳光晒过的胶片。", photos: [[81,"马耳他"],[82,"马耳他"],[83,"马耳他"]] },
+  { code: "MA", country: "摩洛哥", left: "48%", top: "43%", cities: ["卡萨布兰卡", "马拉喀什", "拉巴特", "阿加迪尔"], note: "这里的颜色、纹样和市场气味，让旅行变成一种感官记忆。", photos: [[31,"卡萨布兰卡"],[32,"卡萨布兰卡"],[33,"拉巴特"],[34,"阿加迪尔"],[35,"阿加迪尔"],[36,"马拉喀什"]] },
+  { code: "GR", country: "希腊", left: "58%", top: "40%", cities: ["扎金索斯", "雅典"], note: "古老遗迹与透明海水之间，是希腊最迷人的反差。", photos: [[22,"扎金索斯"],[23,"扎金索斯"],[24,"雅典"],[25,"雅典"]] },
+  { code: "IS", country: "冰岛", left: "44%", top: "23%", cities: ["Iceland"], note: "风、黑色土地和辽阔天际，让人重新理解自然的尺度。", photos: [[2,"冰岛"],[3,"冰岛"]] },
+  { code: "AU", country: "澳大利亚", left: "84%", top: "75%", cities: ["悉尼"], note: "南半球的阳光、海风和城市天际线，被收进了我关于自由的一页。", photos: [[57,"悉尼"],[58,"悉尼"],[59,"悉尼"]] },
+  { code: "NZ", country: "新西兰", left: "93%", top: "81%", cities: ["北岛", "南岛", "皇后镇"], note: "从北岛到南岛，公路把雪山、湖泊与旷野连成一封很长的信。", photos: [[41,"北岛"],[42,"北岛"],[43,"南岛"],[44,"南岛"],[45,"皇后镇"]] },
+  { code: "TH", country: "泰国", left: "77%", top: "55%", cities: ["清迈", "普吉"], note: "第一次更确定：我喜欢独自旅行，也喜欢在陌生城市里重新认识自己。", photos: [[53,"普吉"],[54,"清迈"]] },
+  { code: "JP", country: "日本", left: "88%", top: "38%", cities: ["京都", "宇治", "大阪", "奈良", "东京", "镰仓", "横滨"], note: "传统与当代之间细腻的秩序感，是我对日本最深的观察。", photos: [[46,"京都"],[47,"大阪"],[48,"大阪"],[49,"宇治"],[50,"宇治"]] },
 ];
+
+const chinaStops: TravelStop[] = [
+  { code:"XJ", country:"新疆", left:"18%", top:"39%", cities:["阿勒泰"], note:"雪山、草原与很长的公路，让目的地之外的过程也成为旅行。", photos:[[37,"阿勒泰"],[38,"阿勒泰"],[39,"阿勒泰"],[40,"阿勒泰"]] },
+  { code:"XZ", country:"西藏", left:"30%", top:"66%", cities:["拉萨", "珠峰大本营", "羊卓雍措"], note:"在高原上，距离和时间都拥有了与城市完全不同的意义。", photos:[[73,"拉萨"],[74,"拉萨"],[75,"珠峰大本营"],[76,"羊卓雍措"]] },
+  { code:"QH", country:"青海", left:"43%", top:"57%", cities:["青海"], note:"湖泊、荒原和公路构成了一种宽阔、安静的自由。", photos:[[78,"青海"],[79,"青海"]] },
+  { code:"GS", country:"甘肃", left:"49%", top:"51%", cities:["张掖", "敦煌 · 莫高窟"], note:"自然地貌与千年文化在这里彼此照亮。", photos:[[61,"张掖"],[62,"张掖"],[63,"莫高窟"]] },
+  { code:"JL", country:"吉林", left:"85%", top:"26%", cities:["吉林", "延边"], note:"北方的冬天和边境城市，让熟悉的国内旅行拥有另一种气质。", photos:[[4,"吉林"],[5,"延边"]] },
+  { code:"ZJ", country:"浙江", left:"77%", top:"64%", cities:["温岭"], note:"从这里出发，也一次次回到这里。", photos:[[55,"温岭"]] },
+  { code:"SN", country:"陕西", left:"59%", top:"55%", cities:["西安"], note:"历史不是遥远的背景，而是仍然参与城市生活的一部分。", photos:[[72,"西安"]] },
+  { code:"HN", country:"湖南", left:"62%", top:"69%", cities:["长沙"], note:"鲜活、热烈、有自己的城市节奏。", photos:[[77,"长沙"]] },
+  { code:"HI", country:"海南", left:"62%", top:"89%", cities:["三亚"], note:"海风、热带阳光和漫长夏天。", photos:[[1,"三亚"],[56,"三亚"]] },
+  { code:"HK", country:"香港", left:"72%", top:"80%", cities:["香港"], note:"密度、速度与电影感叠在同一座城市。", photos:[[80,"香港"]] },
+  { code:"MO", country:"澳门", left:"69%", top:"81%", cities:["澳门"], note:"在很小的尺度里，旧建筑与旅行记忆交错出现。", photos:[[60,"澳门"]] },
+];
+
+const visitedChina = ["吉林", "内蒙古", "北京", "江苏", "西藏", "青海", "浙江", "安徽", "陕西", "上海", "江西", "福建", "云南", "湖南", "新疆", "广东", "海南", "甘肃", "宁夏", "香港", "澳门"];
 
 const works = [
   { type: "ACG / ILLUSTRATION", title: "从创作到社群", className: "work-blue", mark: "200+ WORKS" },
@@ -51,9 +70,15 @@ function Plane() {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("UK");
+  const [selectedChina, setSelectedChina] = useState("XJ");
+  const [mapMode, setMapMode] = useState<"world" | "china">("world");
   const [transitioning, setTransitioning] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
-  const selectedStop = travelStops.find((stop) => stop.code === selectedCountry) ?? travelStops[0];
+  const departureRef = useRef<HTMLElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const selectedStop = mapMode === "world"
+    ? travelStops.find((stop) => stop.code === selectedCountry) ?? travelStops[0]
+    : chinaStops.find((stop) => stop.code === selectedChina) ?? chinaStops[0];
 
   useEffect(() => {
     const hero = heroRef.current;
@@ -95,6 +120,43 @@ export default function Home() {
       window.cancelAnimationFrame(frame);
       window.removeEventListener("pointermove", onMove);
       document.documentElement.removeEventListener("mouseleave", settle);
+    };
+  }, []);
+
+  useEffect(() => {
+    let frame = 0;
+    const updateScrollScenes = () => {
+      frame = 0;
+      const departure = departureRef.current;
+      if (departure) {
+        const rect = departure.getBoundingClientRect();
+        const distance = Math.max(1, rect.height - window.innerHeight);
+        const progress = Math.max(0, Math.min(1, -rect.top / distance));
+        departure.style.setProperty("--plane-y", `${86 - progress * 122}vh`);
+        departure.style.setProperty("--trail-height", `${8 + progress * 112}vh`);
+        departure.style.setProperty("--reveal-top", `${100 - progress * 104}%`);
+        departure.style.setProperty("--departure-copy", `${Math.max(0, Math.min(1, progress * 2.4 - .2))}`);
+      }
+      const gallery = galleryRef.current;
+      if (gallery) {
+        const rect = gallery.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height * .45)));
+        gallery.style.setProperty("--title-scale", (.72 + progress * .28).toFixed(3));
+        gallery.style.setProperty("--title-opacity", Math.max(0, Math.min(1, progress * 1.7)).toFixed(3));
+        gallery.style.setProperty("--title-blur", `${Math.max(0, 8 - progress * 11).toFixed(2)}px`);
+        gallery.classList.toggle("is-scattered", progress > .22);
+      }
+    };
+    const requestUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateScrollScenes);
+    };
+    updateScrollScenes();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
     };
   }, []);
 
@@ -149,32 +211,64 @@ export default function Home() {
         <p className="coordinates">30.2741° N<br />120.1551° E</p>
       </section>
 
+      <section className="departure-sequence" ref={departureRef} aria-label="从天空飞往旅行地图">
+        <div className="departure-sticky">
+          <div className="departure-grid" aria-hidden="true" />
+          <div className="vertical-flight" aria-hidden="true"><span>✈</span><i /></div>
+          <div className="departure-copy"><small>NEXT DESTINATION · 01</small><strong>SOAR THROUGH<br />THE SKY</strong><em>Scroll to follow the flight</em></div>
+          <div className="map-curtain" aria-hidden="true"><p>THE WORLD<br /><span>according to Fay</span></p></div>
+        </div>
+      </section>
+
       <section id="map" className="section map-section">
         <SectionTitle number="01" kicker="THE PLACES THAT SHAPED ME" title={<>My world is made of<br /><em>places & stories.</em></>} />
+        <div className="atlas-tabs" role="tablist" aria-label="切换世界地图与中国地图">
+          <button className={mapMode === "world" ? "active" : ""} onClick={() => setMapMode("world")} role="tab" aria-selected={mapMode === "world"}><span>01</span> WORLD · 14 COUNTRIES</button>
+          <button className={mapMode === "china" ? "active" : ""} onClick={() => setMapMode("china")} role="tab" aria-selected={mapMode === "china"}><span>02</span> CHINA · 21 REGIONS</button>
+        </div>
         <div className="map-layout">
-          <div className="map-board">
-            <img className="illustrated-map" src={asset("/travel-map.jpg")} alt="Fay 去过的国家手绘世界地图" />
+          <div className={`map-board ${mapMode === "china" ? "china-board" : ""}`}>
+            <img className="illustrated-map" src={asset(mapMode === "world" ? "/travel-map.jpg" : "/china-provinces.png")} alt={mapMode === "world" ? "Fay 去过的国家手绘世界地图" : "Fay 去过的中国省份地图"} />
             <div className="map-grid" />
-            <div className="route route-a" /><div className="route route-b" /><div className="route route-c" />
-            {travelStops.map((stop) => (
-              <button key={stop.code} className={`map-pin ${selectedCountry === stop.code ? "active" : ""}`} style={{ left: stop.left, top: stop.top }} onClick={() => setSelectedCountry(stop.code)} aria-label={`查看${stop.country}旅行故事`}>
+            {mapMode === "world" && <><div className="route route-a" /><div className="route route-b" /><div className="route route-c" /></>}
+            {(mapMode === "world" ? travelStops : chinaStops).map((stop) => (
+              <button key={stop.code} className={`map-pin ${(mapMode === "world" ? selectedCountry : selectedChina) === stop.code ? "active" : ""}`} style={{ left: stop.left, top: stop.top }} onClick={() => mapMode === "world" ? setSelectedCountry(stop.code) : setSelectedChina(stop.code)} aria-label={`查看${stop.country}旅行故事`}>
                 <i /><span>{stop.code}</span>
               </button>
             ))}
-            <div className="map-plane"><Plane /></div>
-            <div className="map-caption"><small>TRAVEL LOG</small><b>14</b><span>COUNTRIES<br />AND COUNTING</span></div>
+            {mapMode === "world" && <div className="map-plane"><Plane /></div>}
+            <div className="map-caption"><small>TRAVEL LOG</small><b>{mapMode === "world" ? "14" : "21"}</b><span>{mapMode === "world" ? <>COUNTRIES<br />AND COUNTING</> : <>REGIONS<br />ACROSS CHINA</>}</span></div>
+            {mapMode === "china" && <small className="map-credit">Map outline: Ultimaps.com</small>}
           </div>
           <aside className="story-card">
-            <div className="photo-placeholder"><span>{selectedStop.code}</span><small>TRAVEL PHOTO<br />ARCHIVE IN PROGRESS</small></div>
+            <div className="story-photo"><img src={asset(`/travel/travel-${String(selectedStop.photos[0][0]).padStart(3,"0")}.jpg`)} alt={`${selectedStop.country}旅行照片`} /><small>{selectedStop.photos[0][1]} · FAY&apos;S ARCHIVE</small></div>
             <p className="stamp">PASSPORT<br /><b>FAY ARCHIVE</b></p>
             <div className="story-copy">
               <p className="eyebrow">CURRENT DESTINATION · {selectedStop.country}</p>
               <h3>{selectedStop.country}<br />{selectedStop.cities[0] || "Travel Archive"}</h3>
               <p>“{selectedStop.note}”</p>
-              <div className="city-tags">{selectedStop.cities.length ? selectedStop.cities.map((city) => <span key={city}>{city}</span>) : <span>城市档案待迁入</span>}</div>
-              <button>OPEN TRAVEL JOURNAL <span>↗</span></button>
+              <div className="city-tags">{selectedStop.cities.map((city) => <span key={city}>{city}</span>)}</div>
+              <button onClick={() => galleryRef.current?.scrollIntoView({behavior:"smooth", block:"center"})}>OPEN PHOTO JOURNAL <span>↓</span></button>
             </div>
           </aside>
+        </div>
+        <div className="atlas-index">
+          {(mapMode === "world" ? travelStops : chinaStops).map((stop) => <button key={stop.code} className={(mapMode === "world" ? selectedCountry : selectedChina) === stop.code ? "active" : ""} onClick={() => mapMode === "world" ? setSelectedCountry(stop.code) : setSelectedChina(stop.code)}>{stop.country}<small>{stop.code}</small></button>)}
+        </div>
+        {mapMode === "china" && <div className="visited-tape"><b>ALSO VISITED</b>{visitedChina.map((place) => <span key={place}>{place}</span>)}</div>}
+        <div className="travel-gallery" ref={galleryRef} key={`${mapMode}-${selectedStop.code}`}>
+          <div className="gallery-depth-copy"><small>PHOTO LOG · {selectedStop.code}</small><strong>{selectedStop.country}</strong><em>{selectedStop.photos.length} memories from the road</em></div>
+          <div className="photo-scatter">
+            {selectedStop.photos.map((photo, index) => {
+              const angles = [-18, 9, -6, 19, -11, 5, 14, -3, 11, -14];
+              const x = [-34, 22, -10, 36, -25, 14, -38, 29, -17, 8][index % 10];
+              const y = [12, -18, 25, 6, -26, 18, -6, 29, -20, 8][index % 10];
+              return <figure className="scatter-card" key={`${photo[0]}-${photo[1]}`} style={{"--angle":`${angles[index % 10]}deg`,"--scatter-x":`${x}vw`,"--scatter-y":`${y}px`,"--delay":`${index * 35}ms`} as React.CSSProperties}>
+                <img loading="lazy" src={asset(`/travel/travel-${String(photo[0]).padStart(3,"0")}.jpg`)} alt={`${selectedStop.country} · ${photo[1]}`} />
+                <figcaption><span>{String(index + 1).padStart(2,"0")}</span>{photo[1]}<small>{selectedStop.country}</small></figcaption>
+              </figure>;
+            })}
+          </div>
         </div>
       </section>
 
