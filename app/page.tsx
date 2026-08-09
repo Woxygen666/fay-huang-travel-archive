@@ -56,15 +56,39 @@ export default function Home() {
   const selectedStop = travelStops.find((stop) => stop.code === selectedCountry) ?? travelStops[0];
 
   useEffect(() => {
-    const onMove = (event: MouseEvent) => {
-      if (!heroRef.current || window.innerWidth < 800) return;
-      const x = (event.clientX / window.innerWidth - 0.5) * 14;
-      const y = (event.clientY / window.innerHeight - 0.5) * 10;
-      heroRef.current.style.setProperty("--mx", `${x}px`);
-      heroRef.current.style.setProperty("--my", `${y}px`);
+    const hero = heroRef.current;
+    if (!hero || window.matchMedia("(pointer: coarse)").matches || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let frame = 0;
+
+    const renderLight = () => {
+      currentX += (targetX - currentX) * 0.055;
+      currentY += (targetY - currentY) * 0.055;
+      hero.style.setProperty("--pointer-x", currentX.toFixed(4));
+      hero.style.setProperty("--pointer-y", currentY.toFixed(4));
+      frame = window.requestAnimationFrame(renderLight);
     };
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
+    const onMove = (event: PointerEvent) => {
+      targetX = Math.max(-1, Math.min(1, (event.clientX / window.innerWidth - 0.5) * 2));
+      targetY = Math.max(-1, Math.min(1, (event.clientY / window.innerHeight - 0.5) * 2));
+    };
+    const settle = () => {
+      targetX = 0;
+      targetY = 0;
+    };
+
+    frame = window.requestAnimationFrame(renderLight);
+    window.addEventListener("pointermove", onMove, { passive: true });
+    document.documentElement.addEventListener("mouseleave", settle);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("pointermove", onMove);
+      document.documentElement.removeEventListener("mouseleave", settle);
+    };
   }, []);
 
   const travelTo = (id: string) => {
@@ -100,11 +124,10 @@ export default function Home() {
       </div>
 
       <section id="home" className="hero" ref={heroRef}>
-        <div className="sun" />
-        <div className="cloud cloud-one"><i /><i /><i /></div>
-        <div className="cloud cloud-two"><i /><i /><i /></div>
-        <div className="cloud cloud-three"><i /><i /><i /></div>
-        <div className="hero-plane"><Plane /><span /></div>
+        <div className="hero-sky-photo" style={{ backgroundImage: `url(${asset("/hero-sky-v2.jpg")})` }} aria-hidden="true" />
+        <div className="hero-light-field" aria-hidden="true" />
+        <div className="hero-atmosphere" aria-hidden="true" />
+        <div className="hero-film" aria-hidden="true" />
         <div className="hero-copy">
           <p className="hero-kicker">A PERSONAL ARCHIVE OF</p>
           <h1>FAY<br /><em>HUANG</em></h1>
