@@ -6,8 +6,8 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const asset = (path: string) => `${basePath}${path}`;
 
 const destinations = [
-  { id: "map", no: "01", icon: "◎", title: "World Map", sub: "我的旅行地图" },
-  { id: "about", no: "02", icon: "♙", title: "About Me", sub: "一本关于我的护照" },
+  { id: "about", no: "01", icon: "♙", title: "About Me", sub: "一本关于我的护照" },
+  { id: "map", no: "02", icon: "◎", title: "World Map", sub: "我的旅行地图" },
   { id: "works", no: "03", icon: "✦", title: "Creative Works", sub: "灵感与创作收藏" },
   { id: "projects", no: "04", icon: "↗", title: "Projects", sub: "我做过的有趣事情" },
   { id: "experience", no: "05", icon: "⌁", title: "Experience", sub: "沿途留下的足迹" },
@@ -74,7 +74,6 @@ export default function Home() {
   const [mapMode, setMapMode] = useState<"world" | "china">("world");
   const [transitioning, setTransitioning] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
-  const departureRef = useRef<HTMLElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const selectedStop = mapMode === "world"
     ? travelStops.find((stop) => stop.code === selectedCountry) ?? travelStops[0]
@@ -127,16 +126,15 @@ export default function Home() {
     let frame = 0;
     const updateScrollScenes = () => {
       frame = 0;
-      const departure = departureRef.current;
-      if (departure) {
+      document.querySelectorAll<HTMLElement>("[data-flight-divider]").forEach((departure) => {
         const rect = departure.getBoundingClientRect();
         const distance = Math.max(1, rect.height - window.innerHeight);
         const progress = Math.max(0, Math.min(1, -rect.top / distance));
-        departure.style.setProperty("--plane-y", `${86 - progress * 122}vh`);
-        departure.style.setProperty("--trail-height", `${8 + progress * 112}vh`);
-        departure.style.setProperty("--reveal-top", `${100 - progress * 104}%`);
-        departure.style.setProperty("--departure-copy", `${Math.max(0, Math.min(1, progress * 2.4 - .2))}`);
-      }
+        departure.style.setProperty("--plane-y", `${91 - progress * 132}vh`);
+        departure.style.setProperty("--trail-height", `${6 + progress * 122}vh`);
+        departure.style.setProperty("--reveal-top", `${102 - progress * 108}%`);
+        departure.style.setProperty("--departure-copy", `${Math.max(0, Math.min(1, 1 - progress * 1.7))}`);
+      });
       const gallery = galleryRef.current;
       if (gallery) {
         const rect = gallery.getBoundingClientRect();
@@ -211,26 +209,39 @@ export default function Home() {
         <p className="coordinates">30.2741° N<br />120.1551° E</p>
       </section>
 
-      <section className="departure-sequence" ref={departureRef} aria-label="从天空飞往旅行地图">
-        <div className="departure-sticky">
-          <div className="departure-grid" aria-hidden="true" />
-          <div className="vertical-flight" aria-hidden="true"><span>✈</span><i /></div>
-          <div className="departure-copy"><small>NEXT DESTINATION · 01</small><strong>SOAR THROUGH<br />THE SKY</strong><em>Scroll to follow the flight</em></div>
-          <div className="map-curtain" aria-hidden="true"><p>THE WORLD<br /><span>according to Fay</span></p></div>
+      <FlightDivider number="01" label={<>SOAR THROUGH<br />THE SKY</>} title="ABOUT FAY" subtitle="open the passport" first />
+
+      <section id="about" className="section paper-section">
+        <SectionTitle number="01" kicker="MEET THE TRAVELLER" title={<>More than a résumé.<br /><em>This is my passport.</em></>} />
+        <div className="passport-wrap">
+          <article className="passport-card">
+            <div className="passport-photo"><img src={asset("/resume-profile-source.png")} alt="黄菲洋" /></div>
+            <div className="passport-info">
+              <p>PERSONAL ARCHIVE · HANGZHOU, CHINA</p><h3>Fay Huang</h3>
+              <div className="passport-fields">
+                <span><small>DIRECTION</small>Marketing · Content</span><span><small>BASED IN</small>Hangzhou, China</span>
+                <span><small>EDUCATION</small>Southampton · Marketing</span><span><small>LANGUAGES</small>中文 · English · 日本語</span>
+              </div>
+              <blockquote>“我相信好的营销，不只是让人看见，而是让人感受到。”</blockquote>
+            </div>
+            <div className="passport-seal">OPEN<br />TO WORK</div>
+          </article>
+          <div className="values-note"><p className="eyebrow">MY NORTH STAR</p><h3>Stay curious.<br />Make it human.<br />Keep moving.</h3><p>新闻传播与市场营销的双重背景，让我习惯从人、内容与业务三个角度理解问题。我想把观察变成创意，再把创意变成真实发生的体验。</p><a className="text-link" href={asset("/fay-huang-resume-travel-marketing.pdf")} download>下载旅游营销简历 ↓</a></div>
         </div>
       </section>
 
+      <FlightDivider number="02" label={<>FOLLOW THE<br />ROUTE</>} title="THE WORLD" subtitle="according to Fay" />
+
       <section id="map" className="section map-section">
-        <SectionTitle number="01" kicker="THE PLACES THAT SHAPED ME" title={<>My world is made of<br /><em>places & stories.</em></>} />
+        <SectionTitle number="02" kicker="THE PLACES THAT SHAPED ME" title={<>My world is made of<br /><em>places & stories.</em></>} />
         <div className="atlas-tabs" role="tablist" aria-label="切换世界地图与中国地图">
           <button className={mapMode === "world" ? "active" : ""} onClick={() => setMapMode("world")} role="tab" aria-selected={mapMode === "world"}><span>01</span> WORLD · 14 COUNTRIES</button>
           <button className={mapMode === "china" ? "active" : ""} onClick={() => setMapMode("china")} role="tab" aria-selected={mapMode === "china"}><span>02</span> CHINA · 21 REGIONS</button>
         </div>
         <div className="map-layout">
           <div className={`map-board ${mapMode === "china" ? "china-board" : ""}`}>
-            <img className="illustrated-map" src={asset(mapMode === "world" ? "/travel-map.jpg" : "/china-provinces.png")} alt={mapMode === "world" ? "Fay 去过的国家手绘世界地图" : "Fay 去过的中国省份地图"} />
+            <img className="illustrated-map" src={asset(mapMode === "world" ? "/travel-map.jpg" : "/china-travel-map-v2.jpg")} alt={mapMode === "world" ? "Fay 去过的国家手绘世界地图" : "Fay 去过的中国省份复古手绘地图"} />
             <div className="map-grid" />
-            {mapMode === "world" && <><div className="route route-a" /><div className="route route-b" /><div className="route route-c" /></>}
             {(mapMode === "world" ? travelStops : chinaStops).map((stop) => (
               <button key={stop.code} className={`map-pin ${(mapMode === "world" ? selectedCountry : selectedChina) === stop.code ? "active" : ""}`} style={{ left: stop.left, top: stop.top }} onClick={() => mapMode === "world" ? setSelectedCountry(stop.code) : setSelectedChina(stop.code)} aria-label={`查看${stop.country}旅行故事`}>
                 <i /><span>{stop.code}</span>
@@ -238,7 +249,7 @@ export default function Home() {
             ))}
             {mapMode === "world" && <div className="map-plane"><Plane /></div>}
             <div className="map-caption"><small>TRAVEL LOG</small><b>{mapMode === "world" ? "14" : "21"}</b><span>{mapMode === "world" ? <>COUNTRIES<br />AND COUNTING</> : <>REGIONS<br />ACROSS CHINA</>}</span></div>
-            {mapMode === "china" && <small className="map-credit">Map outline: Ultimaps.com</small>}
+            {mapMode === "china" && <small className="map-credit">ILLUSTRATED FOR FAY&apos;S ARCHIVE</small>}
           </div>
           <aside className="story-card">
             <div className="story-photo"><img src={asset(`/travel/travel-${String(selectedStop.photos[0][0]).padStart(3,"0")}.jpg`)} alt={`${selectedStop.country}旅行照片`} /><small>{selectedStop.photos[0][1]} · FAY&apos;S ARCHIVE</small></div>
@@ -272,24 +283,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="section paper-section">
-        <SectionTitle number="02" kicker="MEET THE TRAVELLER" title={<>More than a résumé.<br /><em>This is my passport.</em></>} />
-        <div className="passport-wrap">
-          <article className="passport-card">
-            <div className="passport-photo"><img src={asset("/resume-profile-source.png")} alt="黄菲洋" /></div>
-            <div className="passport-info">
-              <p>PERSONAL ARCHIVE · HANGZHOU, CHINA</p><h3>Fay Huang</h3>
-              <div className="passport-fields">
-                <span><small>DIRECTION</small>Marketing · Content</span><span><small>BASED IN</small>Hangzhou, China</span>
-                <span><small>EDUCATION</small>Southampton · Marketing</span><span><small>LANGUAGES</small>中文 · English · 日本語</span>
-              </div>
-              <blockquote>“我相信好的营销，不只是让人看见，而是让人感受到。”</blockquote>
-            </div>
-            <div className="passport-seal">OPEN<br />TO WORK</div>
-          </article>
-          <div className="values-note"><p className="eyebrow">MY NORTH STAR</p><h3>Stay curious.<br />Make it human.<br />Keep moving.</h3><p>新闻传播与市场营销的双重背景，让我习惯从人、内容与业务三个角度理解问题。我想把观察变成创意，再把创意变成真实发生的体验。</p><a className="text-link" href={asset("/fay-huang-resume-travel-marketing.pdf")} download>下载旅游营销简历 ↓</a></div>
-        </div>
-      </section>
+      <FlightDivider number="03" label={<>COLLECT THE<br />IDEAS</>} title="CREATE" subtitle="things I've made" />
 
       <section id="works" className="section works-section">
         <SectionTitle number="03" kicker="THINGS I HAVE MADE" title={<>A cabinet of<br /><em>creative curiosities.</em></>} />
@@ -298,12 +292,16 @@ export default function Home() {
         </div>
       </section>
 
+      <FlightDivider number="04" label={<>TURN IDEAS<br />INTO ACTION</>} title="PROJECTS" subtitle="ideas in motion" />
+
       <section id="projects" className="section projects-section">
         <SectionTitle number="04" kicker="SELECTED CASE STUDIES" title={<>Ideas with a<br /><em>destination.</em></>} />
         <div className="project-list">
           {projects.map((project, index) => <article key={project.title}><span>0{index + 1}</span><div><p>{project.tag}</p><h3>{project.title}</h3><p className="project-detail">{project.detail}</p></div><b>{project.result}</b><button>EXPLORE CASE ↗</button></article>)}
         </div>
       </section>
+
+      <FlightDivider number="05" label={<>TRACE THE<br />JOURNEY</>} title="THE ROUTE" subtitle="journey so far" />
 
       <section id="experience" className="section route-section">
         <SectionTitle number="05" kicker="THE JOURNEY SO FAR" title={<>Every stop taught me<br /><em>something new.</em></>} />
@@ -318,6 +316,8 @@ export default function Home() {
         </div>
       </section>
 
+      <FlightDivider number="06" label={<>PACK WHAT<br />MATTERS</>} title="SKILLS" subtitle="what I carry" />
+
       <section id="skills" className="section skills-section">
         <SectionTitle number="06" kicker="WHAT I CARRY WITH ME" title={<>A suitcase full of<br /><em>useful things.</em></>} />
         <div className="suitcase">
@@ -326,6 +326,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <FlightDivider number="07" label={<>SEND A NOTE<br />FROM HERE</>} title="POSTCARD" subtitle="say hello" />
 
       <section id="contact" className="section contact-section">
         <div className="postcard">
@@ -340,4 +342,15 @@ export default function Home() {
 
 function SectionTitle({ number, kicker, title }: { number: string; kicker: string; title: React.ReactNode }) {
   return <div className="section-title"><span>{number}</span><div><p>{kicker}</p><h2>{title}</h2></div><i /></div>;
+}
+
+function FlightDivider({ number, label, title, subtitle, first = false }: { number: string; label: React.ReactNode; title: string; subtitle: string; first?: boolean }) {
+  return <section className={`departure-sequence ${first ? "departure-first" : "departure-compact"}`} data-flight-divider aria-label={`飞往第 ${number} 站 ${title}`}>
+    <div className="departure-sticky">
+      <div className="departure-grid" aria-hidden="true" />
+      <div className="vertical-flight" aria-hidden="true"><span>✈</span><i /></div>
+      <div className="departure-copy"><small>NEXT DESTINATION · {number}</small><strong>{label}</strong></div>
+      <div className="map-curtain" aria-hidden="true"><p>{title}<br /><span>{subtitle}</span></p></div>
+    </div>
+  </section>;
 }

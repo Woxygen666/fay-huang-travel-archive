@@ -16,9 +16,12 @@ test("renders the travel archive and its scroll journey", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /<title>Fay Huang — The Travel Archive<\/title>/i);
-  assert.match(html, /class="departure-sequence"/);
+  assert.equal((html.match(/data-flight-divider/g) ?? []).length, 7);
+  assert.ok(html.indexOf('id="about"') < html.indexOf('id="map"'));
+  assert.match(html, /ABOUT FAY/);
   assert.match(html, /WORLD · 14 COUNTRIES/);
   assert.match(html, /CHINA · 21 REGIONS/);
+  assert.doesNotMatch(html, /Scroll to follow the flight/);
   assert.match(html, /class="photo-scatter"/);
   assert.match(html, /travel\/travel-064\.jpg/);
   assert.doesNotMatch(html, /codex-preview|Building your site/);
@@ -26,8 +29,9 @@ test("renders the travel archive and its scroll journey", async () => {
 
 test("ships the complete optimized travel photo archive", async () => {
   const travelRoot = new URL("../public/travel/", import.meta.url);
-  const photos = (await readdir(travelRoot)).filter((file) => /\.jpg$/i.test(file));
+  const photos = (await readdir(travelRoot)).filter((file) => /^travel-\d{3}\.jpg$/i.test(file));
   assert.equal(photos.length, 83);
   await access(new URL("../public/china-provinces.png", import.meta.url));
+  await access(new URL("../public/china-travel-map-v2.jpg", import.meta.url));
   await access(new URL("../public/travel-map.jpg", import.meta.url));
 });
