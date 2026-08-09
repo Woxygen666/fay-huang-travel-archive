@@ -30,7 +30,8 @@ test("renders the travel archive and its scroll journey", async () => {
 test("ships the complete optimized travel photo archive", async () => {
   const travelRoot = new URL("../public/travel/", import.meta.url);
   const photos = (await readdir(travelRoot)).filter((file) => /^travel-\d{3}\.jpg$/i.test(file));
-  assert.equal(photos.length, 83);
+  assert.equal(photos.length, 88);
+  await access(new URL("../public/travel/travel-088.jpg", import.meta.url));
   await access(new URL("../public/china-provinces.png", import.meta.url));
   await access(new URL("../public/china-travel-map-v2.jpg", import.meta.url));
   await access(new URL("../public/travel-map.jpg", import.meta.url));
