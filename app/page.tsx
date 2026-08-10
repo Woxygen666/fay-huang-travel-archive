@@ -19,7 +19,7 @@ type TravelPhoto = [number, string];
 type TravelStop = { code: string; country: string; left: string; top: string; cities: string[]; note: string; photos: TravelPhoto[] };
 
 const travelStops: TravelStop[] = [
-  { code: "UK", country: "英国", left: "51%", top: "29%", cities: ["巴斯", "伯恩茅斯", "约克", "伦敦", "怀特岛", "南安普顿", "剑桥", "朴茨茅斯"], note: "在这里完成硕士学习，也第一次真正把生活放进另一种文化里。", photos: [[64,"Durdle Door"],[65,"伦敦"],[66,"伦敦"],[67,"伯恩茅斯"],[68,"剑桥"],[69,"巴斯"],[70,"怀特岛"],[71,"朴茨茅斯"]] },
+  { code: "UK", country: "英国", left: "51%", top: "29%", cities: ["南安普顿", "巴斯", "伯恩茅斯", "约克", "伦敦", "怀特岛", "剑桥", "朴茨茅斯"], note: "在这里完成硕士学习，也第一次真正把生活放进另一种文化里。", photos: [[89,"南安普顿"],[64,"Durdle Door"],[65,"伦敦"],[66,"伦敦"],[67,"伯恩茅斯"],[68,"剑桥"],[69,"巴斯"],[70,"怀特岛"],[71,"朴茨茅斯"]] },
   { code: "FR", country: "法国", left: "52%", top: "34%", cities: ["巴黎"], note: "巴黎让我记住：一座城市的品牌，藏在无数日常细节里。", photos: [[51,"巴黎"],[52,"巴黎"]] },
   { code: "IT", country: "意大利", left: "54%", top: "39%", cities: ["佛罗伦萨", "罗马", "多洛米蒂 · Bolzano"], note: "从文艺复兴城市到多洛米蒂，风景本身就是最有力量的叙事。", photos: [[26,"佛罗伦萨"],[27,"多洛米蒂"],[28,"Bolzano"],[29,"罗马"],[30,"罗马"]] },
   { code: "AT", country: "奥地利", left: "55%", top: "32%", cities: ["维也纳", "哈尔施塔特", "圣沃尔夫冈", "Salzburg"], note: "湖区、山谷与古典城市共同组成一段安静的欧洲夏天。", photos: [[15,"Salzburg"],[16,"阿尔卑斯山区"],[17,"阿尔卑斯山区"],[18,"奥地利湖区"],[19,"奥地利湖区"],[20,"奥地利湖区"]] },
