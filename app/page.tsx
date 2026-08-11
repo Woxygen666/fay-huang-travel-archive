@@ -218,8 +218,8 @@ export default function Home() {
             <div className="phone-shell"><img src={asset("/about/lana-player.png")} alt="Lana Del Rey 音乐播放界面" /></div>
             <figcaption>MUSIC · LANA DEL REY</figcaption>
           </figure>
-          <figure className="interest-object camera-sticker" tabIndex={0} aria-label="摄影">
-            <img src={asset("/about/camera.jpg")} alt="Fujifilm 相机" /><figcaption>PHOTOGRAPHY</figcaption>
+          <figure className="interest-object camera-object" tabIndex={0} aria-label="摄影">
+            <img src={asset("/about/camera-transparent.png")} alt="Fujifilm 相机" /><figcaption>PHOTOGRAPHY · 摄影</figcaption>
           </figure>
           <figure className="interest-object game-sticker" tabIndex={0} aria-label="游戏：塞尔达传说">
             <img src={asset("/about/zelda.jpg")} alt="塞尔达传说" /><figcaption>GAMES · ZELDA</figcaption>
@@ -227,68 +227,70 @@ export default function Home() {
           <figure className="interest-object switch-sticker" tabIndex={0} aria-label="Nintendo Switch">
             <img src={asset("/about/nintendo-switch.jpg")} alt="Nintendo Switch" /><figcaption>PLAY</figcaption>
           </figure>
-          <figure className="interest-object headphone-sticker" tabIndex={0} aria-label="音乐与耳机">
-            <img src={asset("/about/headphones.jpg")} alt="耳机" /><figcaption>ALWAYS LISTENING</figcaption>
+          <figure className="interest-object headphones-object" tabIndex={0} aria-label="音乐与耳机">
+            <img src={asset("/about/headphones-transparent.png")} alt="耳机" /><figcaption>ALWAYS LISTENING · 音乐</figcaption>
           </figure>
-          <figure className="interest-object cinema-ticket" tabIndex={0} aria-label="电影：最喜欢《指环王》系列，也喜欢昆汀·塔伦蒂诺">
-            <span>FAVOURITE FILM SERIES</span><b>THE LORD OF<br />THE RINGS</b><small>+ QUENTIN TARANTINO</small><figcaption>CINEMA</figcaption>
+          <figure className="interest-object cinema-sticker" tabIndex={0} aria-label="最喜欢的系列电影：指环王">
+            <img src={asset("/about/lord-of-the-rings.png")} alt="指环王：护戒使者电影海报" /><figcaption>THE LORD OF THE RINGS · 指环王</figcaption>
           </figure>
           <figure className="interest-object art-sticker" tabIndex={0} aria-label="画画与视觉创作">
-            <span>✎</span><b>MAKE<br />THINGS</b><figcaption>DRAWING</figcaption>
+            <img src={asset("/about/art-palette.png")} alt="画板与画笔" /><figcaption>DRAWING · 画画</figcaption>
           </figure>
+
+          <div className="desk-pencil pencil-one" aria-hidden="true" />
+          <div className="desk-pencil pencil-two" aria-hidden="true" />
+          <div className="paperclip clip-one" aria-hidden="true" />
+          <div className="paperclip clip-two" aria-hidden="true" />
+          <div className="coffee-ring" aria-hidden="true" />
+          <div className="ticket-stub" aria-hidden="true"><small>BOARDING</small><b>HGH → ANYWHERE</b><span>FAY · 01</span></div>
+          <div className="torn-note" aria-hidden="true">remember to<br /><b>stay curious</b> ✦</div>
 
           <article className="passport-book" aria-label="Fay Huang 的个人档案护照">
             <div className="passport-spine" aria-hidden="true" />
             <section className="passport-page passport-notes">
-              <p className="passport-page-label">THE TRAVEL ARCHIVE · NOTES</p>
+              <p className="passport-page-label">PERSONAL <span>· 关于我</span></p>
               <div className="passport-route" aria-hidden="true"><span>HANGZHOU</span><i>✈ · · · · · · · · · · · · ·</i><span>EVERYWHERE</span></div>
               <div className="passport-intro">
-                <small>THIS PASSPORT BELONGS TO</small>
+                <small>THE TRAVEL ARCHIVE · ABOUT</small>
                 <h3>A traveller who collects<br /><em>places, stories & ideas.</em></h3>
-                <p>我在新闻传播里学习观察，在市场营销里学习把观察变成行动。旅行让我继续练习理解陌生的人、文化与生活方式。</p>
+                <p>I observe the world through a journalist&apos;s eyes, then turn those observations into stories, ideas and experiences through marketing. Travel keeps me curious about people, culture and the small details that make a place unforgettable.</p>
+                <p className="passport-cn">我用新闻人的眼睛观察世界，也用营销与创作把观察变成故事、想法与体验。旅行让我始终对人、文化和那些让一座城市难忘的细节保持好奇。</p>
               </div>
               <div className="passport-collections">
-                <span><small>I COLLECT</small>城市细节 · 旅行照片 · 灵感碎片</span>
-                <span><small>I CREATE</small>内容 · Campaigns · Visual Stories</span>
-                <span><small>I CARE ABOUT</small>真实的人 · 有温度的表达 · 值得记住的体验</span>
+                <span><small>I COLLECT · 我收藏</small>Places · Photographs · Stories · Little observations</span>
+                <span><small>I CREATE · 我创造</small>Campaigns · Content · Visuals · Digital Experiments</span>
+                <span><small>I&apos;M CURIOUS ABOUT · 我好奇</small>People · Culture · Brands · The way stories travel</span>
               </div>
               <div className="north-star-note">
                 <p>MY NORTH STAR</p>
-                <strong>Stay curious.<br />Make it human.<br />Keep moving.</strong>
+                <strong>Stay curious. Keep moving.</strong>
               </div>
-              <div className="passport-stamp stamp-one">FAY<br /><b>1999</b><br />ARCHIVE</div>
-              <div className="passport-stamp stamp-two">VALID FOR<br /><b>THE NEXT<br />ADVENTURE</b></div>
+              <div className="passport-numbers">
+                <small>BY THE NUMBERS · 数字里的我</small>
+                <p><b>10+</b> Places <i>/</i> <b>5K+</b> Followers <i>/</i> <b>100K+</b> Views <i>/</i> <b>7.0</b> IELTS</p>
+              </div>
             </section>
 
             <section className="passport-page passport-id">
-              <div className="passport-heading"><span>护照<br /><b>PASSPORT</b></span><strong>FAY HUANG</strong><small>PERSONAL ARCHIVE</small></div>
-              <div className="passport-identity">
+              <p className="passport-page-label">PROFESSIONAL <span>· 职业档案</span></p>
+              <div className="professional-head">
+                <div><h3>FAY<br /><em>HUANG</em></h3><p>MARKETING · CONTENT · CREATIVE</p></div>
                 <div className="passport-photo"><img src={asset("/resume-profile-source.png")} alt="黄菲洋" /></div>
-                <div className="passport-data">
-                  <span><small>姓 / SURNAME</small>HUANG</span>
-                  <span><small>名 / GIVEN NAMES</small>FEIYANG · FAY</span>
-                  <span><small>国籍 / NATIONALITY</small>CHINESE</span>
-                  <span><small>身份 / IDENTITY</small>MARKETER · TRAVELLER · STORYTELLER</span>
-                </div>
               </div>
-              <div className="passport-fields">
-                <span><small>常驻 / HOME BASE</small>Hangzhou, China</span>
-                <span><small>专业方向 / DIRECTION</small>Travel · Content · Brand</span>
-                <span><small>教育 / EDUCATION</small>Journalism → Fashion Marketing & Branding</span>
-                <span><small>语言 / LANGUAGES</small>中文 · English (IELTS 7.0) · 日本語</span>
-                <span><small>签发机关 / AUTHORITY</small>The Travel Archive</span>
-                <span><small>有效期 / VALID UNTIL</small>A Journey in Progress</span>
+              <div className="professional-fields">
+                <span><small>BASED IN · 常驻</small>Hangzhou, China</span>
+                <span><small>EDUCATION · 教育</small>MA Fashion Marketing &amp; Branding<br />BA Journalism</span>
+                <span><small>EXPERIENCE · 经历</small>Marketing Campaigns · Content · Customer Engagement</span>
+                <span><small>LANGUAGES · 语言</small>Chinese · English (IELTS 7.0)</span>
+                <span><small>TOOLS · 工具</small>Photoshop · Premiere · CapCut · Figma · AI Tools</span>
+                <span><small>INTERESTS · 兴趣</small>Travel · Photography · Visual Culture · Games</span>
               </div>
-              <blockquote>“我相信好的营销，不只是让人看见，而是让人感受到。”</blockquote>
-              <p className="passport-signature">Fay Huang</p>
-              <p className="passport-mrz">P&lt;CHN&lt;HUANG&lt;&lt;FEIYANG&lt;FAY&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br />FAY1999&lt;&lt;JOURNEY&lt;IN&lt;PROGRESS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
+              <div className="passport-resume-cta">
+                <p>Want the professional version?<small>想看看更职业的我？</small></p>
+                <a href={asset("/fay-huang-resume-travel-marketing.pdf")} download>VIEW RESUME <span>→</span></a>
+              </div>
             </section>
           </article>
-        </div>
-        <div className="professional-cta">
-          <p>Looking for the professional version?</p>
-          <a href={asset("/fay-huang-resume-travel-marketing.pdf")} download>View my résumé <span>→</span></a>
-          <small>查看教育、工作经历与项目成果</small>
         </div>
       </section>
 
