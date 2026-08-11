@@ -202,3 +202,18 @@ button { cursor:pointer; }
 
 @media (max-width:900px){.about-desk{min-height:1390px}.passport-book{top:110px;width:88%;grid-template-columns:1fr;transform:translateX(-50%) rotate(-.3deg)}.passport-page{min-height:575px}.passport-id{min-height:610px}.camera-object{left:-65px;top:-25px}.headphones-object{right:-72px;bottom:-45px}.cinema-sticker{top:650px;right:13px}.art-sticker{right:148px}.torn-note{right:110px}}
 @media (max-width:640px){.about-desk{min-height:1435px}.passport-book{top:130px;width:94%}.passport-page{padding:25px 21px}.passport-notes{min-height:610px}.passport-id{min-height:640px}.passport-intro h3{font-size:22px}.passport-intro p{font-size:8px}.passport-collections span{font-size:7.5px}.passport-numbers{left:21px;right:21px;bottom:76px}.passport-numbers p{font-size:6px}.passport-numbers b{font-size:10px}.north-star-note{left:21px;right:21px}.professional-head{grid-template-columns:1fr 96px;gap:10px}.professional-head h3{font-size:34px}.professional-head .passport-photo{height:122px}.professional-head .passport-photo img{right:-73px;top:-64px}.professional-fields{font-size:7.5px;gap:10px}.passport-resume-cta{left:21px;right:21px;bottom:22px}.passport-resume-cta p{font-size:10px}.camera-object{width:190px;height:135px;left:-65px}.headphones-object{display:block;width:200px;height:150px;right:-75px;bottom:-42px}.cinema-sticker{display:block;top:auto;right:11px;bottom:175px;width:82px;height:124px}.art-sticker{display:block;right:91px;bottom:17px;width:82px;height:72px}.game-sticker,.switch-sticker,.pencil-two,.clip-one{display:none}.phone-player{width:82px}.phone-shell{height:160px}.ticket-stub{left:8px;top:250px;width:103px}.torn-note{right:82px;top:26px;width:95px}.coffee-ring{right:-28px}}
+
+/* Recruiter-friendly type scale: still passport-like, but readable at a glance. */
+.about-desk{min-height:860px}
+.passport-book{width:min(1020px,87%);min-height:620px}
+.passport-page-label{font-size:10.5px}.passport-page-label span{font-size:7.2px}
+.passport-intro>small{font-size:7px}.passport-intro h3{font-size:28px}.passport-intro p{font-size:11px;line-height:1.58}.passport-intro .passport-cn{font-size:8.5px;line-height:1.62}
+.passport-collections{gap:9px}.passport-collections span{font-size:10px;line-height:1.48}.passport-collections small{font-size:6px}
+.passport-numbers small{font-size:6px}.passport-numbers p{font-size:9.5px}.passport-numbers b{font-size:15px}
+.north-star-note strong{font-size:14px}
+.professional-head h3{font-size:44px}.professional-head p{font-size:7px}
+.professional-fields{font-size:10.5px;line-height:1.48;gap:13px 16px}.professional-fields small{font-size:6.2px}
+.passport-resume-cta p{font-size:14px}.passport-resume-cta p small{font-size:7px}.passport-resume-cta a{font-size:7px;padding:11px 13px}
+
+@media (max-width:900px){.about-desk{min-height:1455px}.passport-book{width:90%}.passport-page{min-height:620px}.passport-id{min-height:650px}}
+@media (max-width:640px){.about-desk{min-height:1510px}.passport-book{width:95%}.passport-page{padding:25px 21px}.passport-notes{min-height:650px}.passport-id{min-height:680px}.passport-page-label{font-size:9.5px}.passport-page-label span{font-size:6.5px}.passport-intro h3{font-size:24px}.passport-intro p{font-size:9.5px}.passport-intro .passport-cn{font-size:7.8px}.passport-collections span{font-size:8.8px}.passport-collections small{font-size:5.5px}.passport-numbers p{font-size:7.5px}.passport-numbers b{font-size:12px}.professional-head h3{font-size:36px}.professional-head p{font-size:6.5px}.professional-fields{font-size:8.8px;line-height:1.48}.professional-fields small{font-size:5.5px}.passport-resume-cta p{font-size:11px}.passport-resume-cta p small{font-size:6px}.passport-resume-cta a{font-size:6.5px}}
