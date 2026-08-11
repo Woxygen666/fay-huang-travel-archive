@@ -51,10 +51,40 @@ const chinaStops: TravelStop[] = [
 const visitedChina = ["吉林", "内蒙古", "北京", "江苏", "西藏", "青海", "浙江", "安徽", "陕西", "上海", "江西", "福建", "云南", "湖南", "新疆", "广东", "海南", "甘肃", "宁夏", "香港", "澳门"];
 
 const works = [
-  { type: "ACG / ILLUSTRATION", title: "从创作到社群", className: "work-blue", mark: "200+ WORKS" },
-  { type: "SOCIAL MEDIA", title: "三账号内容矩阵", className: "work-film", mark: "5K+ FANS" },
-  { type: "SHORT VIDEO", title: "百万播放内容策划", className: "work-orange", mark: "1M+ VIEWS" },
-  { type: "PRODUCT DESIGN", title: "五月天主题周边", className: "work-stripe", mark: "100 PCS" },
+  {
+    id: "community", type: "CREATIVE COMMUNITY", title: "从创作到社群", mark: "200+ WORKS",
+    image: "/works/creative-community.jpg", imagePosition: "center 42%", selected: "12 selected works", cases: "2 case studies",
+    intro: "从持续创作到社群协作，记录个人视觉语言如何在反馈、共创与长期更新中逐渐成形。",
+    highlights: ["原创插画与角色视觉", "社群内容与互动", "创作过程与迭代", "作品反馈与复盘"],
+  },
+  {
+    id: "social", type: "SOCIAL MEDIA", title: "三账号内容矩阵", mark: "5K+ FANS",
+    image: "/works/social-media.jpg", imagePosition: "center 45%", selected: "18 selected posts", cases: "3 platform studies",
+    intro: "独立运营小红书、抖音等内容账号，通过选题、用户画像与平台反馈持续迭代内容方向。",
+    highlights: ["三平台内容矩阵", "用户与流量洞察", "选题、发布与复盘", "5K+ 累计粉丝"],
+  },
+  {
+    id: "video", type: "SHORT VIDEO", title: "百万播放内容策划", mark: "1M+ VIEWS",
+    image: "/works/short-video.jpg", imagePosition: "center 42%", selected: "9 selected videos", cases: "2 viral case studies",
+    intro: "从热点判断、脚本结构到剪辑发布，用真实播放与互动反馈验证短视频内容策略。",
+    highlights: ["脚本与叙事节奏", "热点内容策划", "剪辑与包装", "百万级累计播放"],
+  },
+  {
+    id: "commerce", type: "CREATIVE COMMERCE", title: "从创意到交付：同人周边项目", mark: "100 PCS",
+    image: "/works/creative-commerce.jpg", imagePosition: "center 43%", selected: "1 complete journey", cases: "7-step SOP",
+    intro: "以同人亚克力立牌为例，完整呈现一个创意如何经过设计、供应链、营销与履约，最终成为被用户收到的产品。",
+    highlights: ["原创视觉与产品设计", "供应商与打样管理", "社媒营销与代理合作", "订单履约与售后"],
+  },
+];
+
+const commerceJourney = [
+  ["01", "INSIGHT / IDEA", "确定 IP、角色与产品概念", "从受众偏好与同人语境出发，明确角色、使用场景和产品定位。"],
+  ["02", "CREATION", "原创插画 / 视觉设计", "完成角色表达、构图与视觉语言，让创意具有清晰而可识别的情绪。"],
+  ["03", "PRODUCT DESIGN", "尺寸、版式、材质、工艺、包装", "将平面作品转换为可生产文件，同时确定结构、材料与最终呈现。"],
+  ["04", "PRODUCTION", "寻找供应商 → 比价 → 打样 → 修改 → 批量生产", "比较报价与工艺，检查样品并多轮修正，控制质量与生产节奏。"],
+  ["05", "MARKETING", "产品图 → 宣传物料 → 社媒内容 → 上架", "搭建完整的产品表达，让创作被看见、理解并产生购买兴趣。"],
+  ["06", "DISTRIBUTION", "代理合作 / 渠道推广", "连接代理与垂直社群，根据渠道特点调整传播方式与合作机制。"],
+  ["07", "FULFILLMENT", "订单 → 包装 → 发货 → 售后", "完成订单管理、包装、物流和售后，让创意真正抵达用户手中。"],
 ];
 
 const projects = [
@@ -72,6 +102,7 @@ export default function Home() {
   const [selectedCountry, setSelectedCountry] = useState("UK");
   const [selectedChina, setSelectedChina] = useState("XJ");
   const [mapMode, setMapMode] = useState<"world" | "china">("world");
+  const [openWork, setOpenWork] = useState<string | null>(null);
   const [transitioning, setTransitioning] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -352,7 +383,48 @@ export default function Home() {
       <section id="works" className="section works-section">
         <SectionTitle number="03" kicker="THINGS I HAVE MADE" title={<>A cabinet of<br /><em>creative curiosities.</em></>} />
         <div className="works-grid">
-          {works.map((work, index) => <article className={`work-card ${work.className}`} key={work.title} style={{ transform: `rotate(${index % 2 ? 1.2 : -1.1}deg)` }}><div className="work-visual"><b>{work.mark}</b><span>✦</span></div><p>{work.type}</p><h3>{work.title}</h3><button aria-label={`查看 ${work.title}`}>↗</button></article>)}
+          {works.map((work, index) => <article className={`work-card ${openWork === work.id ? "is-open" : ""}`} key={work.id} style={{ "--card-tilt": `${index % 2 ? 1.2 : -1.1}deg` } as React.CSSProperties}>
+            <button className="work-cover-button" aria-expanded={openWork === work.id} aria-controls={`work-drawer-${work.id}`} onClick={() => setOpenWork(openWork === work.id ? null : work.id)}>
+              <div className="work-visual">
+                <img src={asset(work.image)} alt={`${work.title}作品封面`} style={{ objectPosition: work.imagePosition }} />
+                <span className="work-number">0{index + 1}</span>
+                <span className="work-postmark">{work.mark}</span>
+                <div className="work-hover-copy">
+                  <small>WHAT&apos;S INSIDE</small>
+                  <b>{work.selected}</b>
+                  <b>{work.cases}</b>
+                  <b>Visual process</b>
+                  <b>Results &amp; reflections</b>
+                  <strong>OPEN DRAWER <i>→</i></strong>
+                </div>
+              </div>
+              <span className="work-meta"><small>{work.type}</small><strong>{work.title}</strong><i>{openWork === work.id ? "−" : "↗"}</i></span>
+            </button>
+          </article>)}
+        </div>
+        <div className={`work-drawer-panel ${openWork ? "is-open" : ""}`} id={openWork ? `work-drawer-${openWork}` : undefined} aria-live="polite">
+          {openWork && (() => {
+            const work = works.find((item) => item.id === openWork) ?? works[0];
+            return <div className="work-drawer-inner">
+              <div className="drawer-heading">
+                <div><p>DRAWER {String(works.findIndex((item) => item.id === work.id) + 1).padStart(2, "0")} · {work.type}</p><h3>{work.title}</h3><p className="drawer-intro">{work.intro}</p></div>
+                <button onClick={() => setOpenWork(null)} aria-label="关闭作品抽屉">CLOSE ×</button>
+              </div>
+              {work.id === "commerce" ? <>
+                <div className="commerce-lead">
+                  <figure><img src={asset(work.image)} alt="同人亚克力立牌项目，从设计到实物交付" /></figure>
+                  <div><small>FEATURED CASE · 同人亚克力立牌</small><h4>One idea.<br /><em>Seven real steps.</em></h4><p>它不只是一次视觉设计，而是一段从用户洞察、创作和产品化，到生产、营销、渠道与履约的完整实践。</p><span>CREATIVE × PRODUCT × OPERATIONS</span></div>
+                </div>
+                <div className="sop-heading"><span>SOP JOURNEY</span><p>从创意到交付 / FROM IDEA TO DELIVERY</p></div>
+                <ol className="sop-journey">
+                  {commerceJourney.map((step) => <li key={step[0]}><span>{step[0]}</span><div><small>{step[1]}</small><h5>{step[2]}</h5><p>{step[3]}</p></div><i aria-hidden="true">↓</i></li>)}
+                </ol>
+              </> : <div className="standard-work-detail">
+                <figure><img src={asset(work.image)} alt={`${work.title}精选内容`} /></figure>
+                <div><small>SELECTED ARCHIVE</small><h4>{work.mark}</h4><p>{work.intro}</p><ul>{work.highlights.map((item) => <li key={item}>{item}</li>)}</ul><p className="drawer-note">更多作品图片、过程稿与数据复盘将在下一轮素材整理后继续补充。</p></div>
+              </div>}
+            </div>;
+          })()}
         </div>
       </section>
 
