@@ -173,7 +173,7 @@ export default function Home() {
 
       <header className="topbar">
         <button className="brand" onClick={() => travelTo("home")} aria-label="回到首页">FH<span>✦</span></button>
-        <div className="edition">THE TRAVEL ARCHIVE<br /><span>EST. 1999 · VOL. 01</span></div>
+        <div className="edition">THE TRAVEL ARCHIVE<br /><span>A JOURNEY IN PROGRESS · VOL. 01</span></div>
         <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen}>
           <span>{menuOpen ? "Close" : "Destinations"}</span><b>{menuOpen ? "×" : "☰"}</b>
         </button>
