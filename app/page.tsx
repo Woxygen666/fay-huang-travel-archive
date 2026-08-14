@@ -96,15 +96,6 @@ const bankProcess = [
   ["05", "REVIEW", "整理照片、数据与活动总结，为下一轮主题活动沉淀经验。"],
 ];
 
-const teaJourney = [
-  ["01", "DISCOVER", "Market & Cultural Research", "调研主流小罐茶产品、年轻消费者偏好及景宁畲族文化与相关品牌案例。"],
-  ["02", "DEFINE", "Brand Positioning", "聚焦“景宁地域文化 × 畲族元素 × 年轻化小罐茶”，以年轻上班族及学生为主要参考人群。"],
-  ["03", "DESIGN", "Visual Direction", "参与 Logo、字体、品牌色彩与包装的早期概念探索；最终视觉由专业设计师基于团队方向深化。"],
-  ["04", "PRODUCT", "From Tea to Product", "参与传统炒青绿茶选品、包装规格及竞品产品形态讨论，探索更便携的商品形式。"],
-  ["05", "COMMUNICATE", "Brand Story & Content", "从年轻消费者视角参与内容调整，并完成部分 Slogan、品牌及社交媒体文案初稿。"],
-  ["06", "LAUNCH", "First Offline Market Test", "参与杭州天目里首场线下测试的摊位陈列、宣传物料、现场销售与消费者沟通。"],
-];
-
 function Plane() {
   return <span className="plane" aria-hidden="true">✈</span>;
 }
@@ -115,7 +106,7 @@ export default function Home() {
   const [selectedChina, setSelectedChina] = useState("XJ");
   const [mapMode, setMapMode] = useState<"world" | "china">("world");
   const [openWork, setOpenWork] = useState<string | null>(null);
-  const [openCase, setOpenCase] = useState<string>("bank");
+  const [openCase, setOpenCase] = useState<string>("tea");
   const [transitioning, setTransitioning] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -448,11 +439,11 @@ export default function Home() {
         <div className="cases-intro"><p>不是一份经历清单，而是一组关于我如何观察、构思、协作并让想法落地的真实工作档案。</p><span>DEPTH OF INVOLVEMENT<br />参与深度决定展示层级</span></div>
 
         <div className="case-index" aria-label="Selected Cases 项目目录">
-          <button className={openCase === "bank" ? "active" : ""} onClick={() => setOpenCase(openCase === "bank" ? "" : "bank")} aria-expanded={openCase === "bank"}>
-            <span>FEATURED 01</span><div><small>CAMPAIGN PLANNING / CUSTOMER ENGAGEMENT</small><strong>厅堂主题营销系列</strong><p>支行层面的主题策划、内容物料、协同执行与活动复盘。</p></div><b>CORE OWNER<br /><em>支行执行层面</em></b><i>{openCase === "bank" ? "−" : "↘"}</i>
-          </button>
           <button className={openCase === "tea" ? "active" : ""} onClick={() => setOpenCase(openCase === "tea" ? "" : "tea")} aria-expanded={openCase === "tea"}>
-            <span>FEATURED 02</span><div><small>EARLY-STAGE BRAND PROJECT</small><strong>畲族特色茶品牌 0→1</strong><p>从文化研究、品牌方向到第一次线下市场测试。</p></div><b>CORE MEMBER<br /><em>Brand & Marketing Support</em></b><i>{openCase === "tea" ? "−" : "↘"}</i>
+            <span>FEATURED 01</span><div><small>EARLY-STAGE BRAND PROJECT</small><strong>“浮光凝露”茶品牌 0→1</strong><p>从景宁实地调研、品牌构建到线下测试与复盘。</p></div><b>CORE MEMBER<br /><em>Brand & Marketing Support</em></b><i>{openCase === "tea" ? "−" : "↘"}</i>
+          </button>
+          <button className={openCase === "bank" ? "active" : ""} onClick={() => setOpenCase(openCase === "bank" ? "" : "bank")} aria-expanded={openCase === "bank"}>
+            <span>FEATURED 02</span><div><small>CAMPAIGN PLANNING / CUSTOMER ENGAGEMENT</small><strong>厅堂主题营销系列</strong><p>支行层面的主题策划、内容物料、协同执行与活动复盘。</p></div><b>CORE OWNER<br /><em>支行执行层面</em></b><i>{openCase === "bank" ? "−" : "↘"}</i>
           </button>
           <button className={openCase === "theatre" ? "active" : ""} onClick={() => setOpenCase(openCase === "theatre" ? "" : "theatre")} aria-expanded={openCase === "theatre"}>
             <span>FEATURED 03</span><div><small>THEATRE CONTENT / SOCIAL MEDIA</small><strong>从舞台到屏幕：剧目内容宣发</strong><p>参与《敦煌奇妙夜》《无人生还》的内容发布与现场记录。</p></div><b>CONTRIBUTOR<br /><em>参与执行</em></b><i>{openCase === "theatre" ? "−" : "↘"}</i>
@@ -465,7 +456,7 @@ export default function Home() {
         <div className={`selected-case-body ${openCase ? "is-open" : ""}`} aria-live="polite">
           {openCase === "bank" && <article className="case-study bank-case">
             <header className="case-hero">
-              <div><p>FEATURED CASE 01 · CAMPAIGN PLANNING</p><h3>厅堂主题营销系列</h3><blockquote>把总行营销要求，转化为支行现场真正能执行、能与客户发生联系的主题活动。</blockquote></div>
+              <div><p>FEATURED CASE 02 · CAMPAIGN PLANNING</p><h3>厅堂主题营销系列</h3><blockquote>把总行营销要求，转化为支行现场真正能执行、能与客户发生联系的主题活动。</blockquote></div>
               <div className="case-role-stamp"><small>MY ROLE</small><b>支行活动策划<br />与执行负责人</b><span>PLANNING · CONTENT<br />COORDINATION · REVIEW</span></div>
             </header>
             <section className="case-overview"><h4>Overview</h4><p>基于总行营销要求，我在支行层面负责主题构思、活动方案、PPT、海报、主持稿、宣传稿、跨部门协调、现场执行及活动复盘。项目不是单次活动，而是一组围绕不同客群与营销节点持续展开的厅堂主题系列。</p></section>
@@ -479,11 +470,28 @@ export default function Home() {
           </article>}
 
           {openCase === "tea" && <article className="case-study tea-case">
-            <header className="tea-hero"><div className="tea-title-card"><p>FEATURED CASE 02 · EARLY-STAGE BRAND PROJECT</p><h3>From Concept<br />to First Market.</h3><strong>从概念到第一次市场测试：<br />一个畲族特色茶品牌的 0→1 实践</strong></div><div className="tea-moodboard" aria-label="品牌前期视觉方向探索"><span className="tea-swatch clay">CULTURE</span><span className="tea-swatch leaf">TEA</span><span className="tea-swatch indigo">SHE</span><i>景宁</i><b>炒青<br />绿茶</b><small>DIRECTION STUDY<br />NOT FINAL VI</small></div></header>
-            <section className="case-overview split"><div><h4>Overview</h4><p>约 5 人小团队共同参与的早期品牌项目。项目以浙江景宁畲族文化为地域基础，将当地传统炒青绿茶与年轻、便携的小罐茶形态结合，探索面向年轻消费者的特色茶品牌。</p></div><div><h4>My Role</h4><p><b>Core Project Member / Brand &amp; Marketing Support</b><br />从早期参与定位讨论、竞品及视觉研究、Logo/字体/色彩/包装方向探索、产品及包装讨论和部分文案初稿，到第一次线下测试的摊位陈列、宣传与现场销售。</p></div></section>
-            <div className="brand-evidence-board"><div className="evidence culture-study"><small>01 · CULTURAL RESEARCH</small><strong>畲族文化<br />与地域视觉</strong><span>Pattern · Colour · Place</span></div><div className="evidence type-study"><small>02 · VISUAL EXPLORATION</small><strong>字形 / 色彩<br />包装方向</strong><span>Early team study</span></div><div className="evidence product-study"><small>03 · PRODUCT FORM</small><strong>小罐茶</strong><span>Portable · Young · Local</span></div><div className="evidence market-study"><small>04 · FIRST MARKET</small><strong>天目里</strong><span>Offline test · Hangzhou</span></div></div>
-            <section className="tea-path"><div className="case-section-heading"><small>BRAND GROWTH PATH</small><h4>Concept → Market</h4></div><ol>{teaJourney.map((step) => <li key={step[0]}><span>{step[0]}</span><div><small>{step[1]}</small><h5>{step[2]}</h5><p>{step[3]}</p></div></li>)}</ol></section>
-            <section className="case-results tea-outcome"><div><small>OUTCOME</small><h4>Brand Concept → Visual Direction → Physical Product → First Offline Market Test</h4><p>项目完成了从品牌概念到首次线下市场测试的完整早期闭环。首次测试后，我因返校而结束持续参与。</p></div><div><small>REFLECTION</small><p>这是我第一次完整接触消费品牌从概念到真实市场的早期过程，也让我开始理解：品牌不仅是视觉和故事，还需要产品、渠道、消费者反馈与持续运营共同支撑。</p></div></section>
+            <header className="tea-hero">
+              <div className="tea-title-card"><p>FEATURED CASE 01 · EARLY-STAGE BRAND PROJECT</p><h3>浮光凝露<br /><em>From Origin to Market.</em></h3><strong>畲族特色茶品牌的 0→1 实践：<br />从景宁茶山到杭州第一次市场测试</strong></div>
+              <figure className="tea-cover-photo"><img src={asset("/cases/tea/origin-fieldwork.jpg")} alt="景宁茶园、鲜叶、茶工厂与实地考察记录" /><figcaption>JINGNING FIELD NOTES · TEA GARDEN / FACTORY / TASTING</figcaption></figure>
+            </header>
+            <section className="case-overview split"><div><h4>Overview</h4><p>约 5 人小团队共同参与的早期品牌项目。项目以浙江景宁畲族文化为地域基础，将与惠明茶同源的金奖绿茶、红茶和年轻便携的小罐形态结合，探索面向年轻消费者的特色茶品牌“浮光凝露”。</p></div><div><h4>My Role</h4><p><b>Core Project Member / Brand &amp; Marketing Support</b><br />参与实地与市场研究、定位讨论、竞品及视觉研究、Logo / 字体 / 色彩 / 包装方向探索、产品讨论、部分品牌文案初稿，以及天目里测试的陈列、宣传、销售与消费者沟通。最终视觉由专业设计师深化，并非由我独立设计。</p></div></section>
+
+            <div className="brand-evidence-board photo-evidence-board">
+              <figure className="evidence"><img src={asset("/cases/tea/she-textile.jpg")} alt="畲族织带纹样研究" /><figcaption><small>01 · CULTURE</small><strong>畲族纹样</strong><span>Pattern · Colour · Place</span></figcaption></figure>
+              <figure className="evidence"><img src={asset("/cases/tea/type-study.jpg")} alt="浮光凝露包装字形探索" /><figcaption><small>02 · TYPE</small><strong>字形与包装</strong><span>Early visual study</span></figcaption></figure>
+              <figure className="evidence"><img src={asset("/cases/tea/tin-production.jpg")} alt="小罐茶包装生产过程" /><figcaption><small>03 · PRODUCT</small><strong>小罐形态</strong><span>Portable · Physical</span></figcaption></figure>
+              <figure className="evidence"><img src={asset("/cases/tea/tea-tasting.jpg")} alt="天目里线下品鉴与产品陈列" /><figcaption><small>04 · MARKET</small><strong>天目里测试</strong><span>Tasting · Hangzhou</span></figcaption></figure>
+            </div>
+
+            <section className="tea-path tea-editorial-path"><div className="case-section-heading"><small>BRAND GROWTH PATH</small><h4>Origin → Brand → Market → Review</h4></div><ol>
+              <li className="tea-stage tea-stage-wide"><span>01–02</span><div className="tea-stage-copy"><small>DISCOVER &amp; DEFINE</small><h5>从真实产地与消费场景中建立品牌方向</h5><p>先走进景宁茶园与茶工厂，了解鲜叶、制茶和产品基础；再探访年轻人社区茶室、观察饮茶空间与消费习惯，并结合竞品及市场研究，将方向聚焦为“景宁畲族文化 × 金奖绿茶 / 红茶 × 年轻化小罐茶”。年轻上班族和学生群体成为首轮参考消费者。</p></div><figure className="tea-stage-media split-media"><img src={asset("/cases/tea/community-teahouse.jpg")} alt="年轻人社区茶室与消费场景调研" /><img src={asset("/cases/tea/origin-fieldwork.jpg")} alt="景宁茶园、鲜叶与工厂实地考察" /><figcaption>FIELD RESEARCH · COMMUNITY TEAHOUSE · MARKET SCAN</figcaption></figure></li>
+              <li className="tea-stage"><span>03</span><div className="tea-stage-copy"><small>DESIGN</small><h5>Visual Direction</h5><p>参与 Logo、字体、品牌色彩和包装的早期方向探索，以畲族织带的色彩与纹样为文化线索，同时测试绿茶与红茶两条产品线的区分方式。最终 VI 由专业设计师基于团队前期方向深化。</p></div><figure className="tea-stage-media"><img src={asset("/cases/tea/packaging-directions.jpg")} alt="浮光凝露多版包装方向探索" /><figcaption>PACKAGING DIRECTIONS · TEAM EXPLORATION</figcaption></figure></li>
+              <li className="tea-stage"><span>04</span><div className="tea-stage-copy"><small>PRODUCT</small><h5>From Tea to a Physical Product</h5><p>围绕与惠明茶同源的金奖绿茶、红茶进行选品与品鉴，并参与包装规格、小罐形态、陈列方式和竞品价格讨论，让地域茶叶从原料转化为可识别、便携的消费产品。</p></div><figure className="tea-stage-media"><img src={asset("/cases/tea/product-display.jpg")} alt="浮光凝露金奖绿茶和惠明红茶小罐产品陈列" /><figcaption>GREEN TEA · BLACK TEA · PORTABLE TINS</figcaption></figure></li>
+              <li className="tea-stage"><span>05</span><div className="tea-stage-copy"><small>COMMUNICATE</small><h5>Brand Story &amp; Content</h5><p>品牌核心故事由项目发起人主导。我从年轻消费者视角参与内容调整，并负责部分 Slogan、品牌说明与社交媒体文案初稿；同时参与首轮传播物料和现场表达，让抽象的“沉淀”生活态度落到可被理解的品牌语言中。</p></div><figure className="tea-stage-media editorial-pair"><img src={asset("/cases/tea/brand-copy.jpg")} alt="浮光凝露 Slogan 和品牌说明文字初稿" /><img src={asset("/cases/tea/market-audience.jpg")} alt="线下消费者接触浮光凝露品牌摊位" /><figcaption>COPY DRAFT · ON-SITE COMMUNICATION</figcaption></figure></li>
+              <li className="tea-stage tea-stage-market"><span>06</span><div className="tea-stage-copy"><small>LAUNCH</small><h5>First Offline Market Test · 天目里</h5><p>在杭州天目里完成第一次真实市场测试。我参与摊位视觉与陈列、宣传物料、现场销售和消费者沟通。页面不以未经核实的销量作结，而是用真实现场展示项目如何第一次进入消费场景。</p></div><div className="market-photo-sequence"><figure><img src={asset("/cases/tea/tianmuli-booth.jpg")} alt="浮光凝露在天目里的完整摊位" /><figcaption>01 · THE BOOTH</figcaption></figure><figure><img src={asset("/cases/tea/tianmuli-testing.jpg")} alt="消费者在浮光凝露摊位品鉴与交流" /><figcaption>02 · CONVERSATION</figcaption></figure><figure><img src={asset("/cases/tea/market-audience.jpg")} alt="天目里现场客流与品牌接触" /><figcaption>03 · REAL AUDIENCE</figcaption></figure></div></li>
+              <li className="tea-stage tea-stage-review"><span>07</span><div className="tea-stage-copy"><small>REVIEW &amp; ITERATE</small><h5>从反馈复盘到线下独立工作室</h5><p>团队根据首次市场接触中收集到的消费者反馈继续复盘产品、视觉与线下体验，并进一步成立线下独立工作室，让品牌从一次市集测试走向更稳定的体验与沟通空间。我因返校在此阶段结束持续参与。</p></div><figure className="tea-stage-media"><img src={asset("/cases/tea/studio-sign.jpg")} alt="浮光凝露线下独立工作室门店标识" /><figcaption>OFFLINE STUDIO · NEXT ITERATION</figcaption></figure></li>
+            </ol></section>
+            <section className="case-results tea-outcome"><div><small>OUTCOME</small><h4>Origin Research → Brand Direction → Physical Product → First Market Test → Offline Studio</h4><p>项目把产地、文化、视觉、产品和真实消费者连接成一个完整的早期品牌成长过程；不以虚构销售数字衡量，而以每一步真实落地作为阶段成果。</p></div><div><small>REFLECTION</small><p>这是我第一次完整接触消费品牌从概念到真实市场的早期过程，也让我理解：品牌不仅是视觉和故事，还需要产品、渠道、消费者反馈与持续运营共同支撑。</p></div></section>
           </article>}
 
           {openCase === "theatre" && <article className="case-study theatre-case">
