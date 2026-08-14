@@ -87,10 +87,22 @@ const commerceJourney = [
   ["07", "FULFILLMENT", "订单 → 包装 → 发货 → 售后", "完成订单管理、包装、物流和售后，让创意真正抵达用户手中。"],
 ];
 
-const projects = [
-  { tag: "CUSTOMER CAMPAIGN", title: "“周四厅堂主题活动日”", detail: "基于客户画像，从零完成主题策划、视觉物料、人员协调、现场执行和活动复盘，首场“小小银行家”被辖区评为优秀案例。", result: "1,000+ 触达" },
-  { tag: "CULTURAL MARKETING", title: "剧目全周期品牌宣发", detail: "参与《无人生还》《敦煌奇妙夜》《猫》等剧目，从预热、爆发到收官设计内容节奏，并用受众数据迭代选题。", result: "+20% 点击率" },
-  { tag: "CREATIVE IP EVENT", title: "千人级城市文化活动", detail: "参与“元宇宙·新消费·智西湖”与西泠书画青少年艺术大展，负责传播方案、社媒文案与视觉物料统筹。", result: "1W+ 阅读" },
+const bankCampaigns = ["银发暖心堂", "螺钿绮梦，杭银相伴", "贵宾客户尊享会", "小小银行家"];
+const bankProcess = [
+  ["01", "CONCEPT", "基于总行营销要求与支行客群，确定月度主题与活动切入点。"],
+  ["02", "PLAN", "撰写活动方案、PPT、主持稿与人员分工，明确现场流程。"],
+  ["03", "CREATE", "制作海报、宣传稿及现场物料，并协调理财、柜面等条线。"],
+  ["04", "EXECUTE", "参与邀约、布置、主持与现场执行，记录客户反馈与意向。"],
+  ["05", "REVIEW", "整理照片、数据与活动总结，为下一轮主题活动沉淀经验。"],
+];
+
+const teaJourney = [
+  ["01", "DISCOVER", "Market & Cultural Research", "调研主流小罐茶产品、年轻消费者偏好及景宁畲族文化与相关品牌案例。"],
+  ["02", "DEFINE", "Brand Positioning", "聚焦“景宁地域文化 × 畲族元素 × 年轻化小罐茶”，以年轻上班族及学生为主要参考人群。"],
+  ["03", "DESIGN", "Visual Direction", "参与 Logo、字体、品牌色彩与包装的早期概念探索；最终视觉由专业设计师基于团队方向深化。"],
+  ["04", "PRODUCT", "From Tea to Product", "参与传统炒青绿茶选品、包装规格及竞品产品形态讨论，探索更便携的商品形式。"],
+  ["05", "COMMUNICATE", "Brand Story & Content", "从年轻消费者视角参与内容调整，并完成部分 Slogan、品牌及社交媒体文案初稿。"],
+  ["06", "LAUNCH", "First Offline Market Test", "参与杭州天目里首场线下测试的摊位陈列、宣传物料、现场销售与消费者沟通。"],
 ];
 
 function Plane() {
@@ -103,6 +115,7 @@ export default function Home() {
   const [selectedChina, setSelectedChina] = useState("XJ");
   const [mapMode, setMapMode] = useState<"world" | "china">("world");
   const [openWork, setOpenWork] = useState<string | null>(null);
+  const [openCase, setOpenCase] = useState<string>("bank");
   const [transitioning, setTransitioning] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -431,9 +444,59 @@ export default function Home() {
       <FlightDivider number="04" label={<>TURN IDEAS<br />INTO ACTION</>} title="PROJECTS" subtitle="ideas in motion" />
 
       <section id="projects" className="section projects-section">
-        <SectionTitle number="04" kicker="SELECTED CASE STUDIES" title={<>Ideas with a<br /><em>destination.</em></>} />
-        <div className="project-list">
-          {projects.map((project, index) => <article key={project.title}><span>0{index + 1}</span><div><p>{project.tag}</p><h3>{project.title}</h3><p className="project-detail">{project.detail}</p></div><b>{project.result}</b><button>EXPLORE CASE ↗</button></article>)}
+        <SectionTitle number="04" kicker="SELECTED MARKETING, CONTENT & EVENT WORK" title={<>Selected Cases.<br /><em>Ideas, put into motion.</em></>} />
+        <div className="cases-intro"><p>不是一份经历清单，而是一组关于我如何观察、构思、协作并让想法落地的真实工作档案。</p><span>DEPTH OF INVOLVEMENT<br />参与深度决定展示层级</span></div>
+
+        <div className="case-index" aria-label="Selected Cases 项目目录">
+          <button className={openCase === "bank" ? "active" : ""} onClick={() => setOpenCase(openCase === "bank" ? "" : "bank")} aria-expanded={openCase === "bank"}>
+            <span>FEATURED 01</span><div><small>CAMPAIGN PLANNING / CUSTOMER ENGAGEMENT</small><strong>厅堂主题营销系列</strong><p>支行层面的主题策划、内容物料、协同执行与活动复盘。</p></div><b>CORE OWNER<br /><em>支行执行层面</em></b><i>{openCase === "bank" ? "−" : "↘"}</i>
+          </button>
+          <button className={openCase === "tea" ? "active" : ""} onClick={() => setOpenCase(openCase === "tea" ? "" : "tea")} aria-expanded={openCase === "tea"}>
+            <span>FEATURED 02</span><div><small>EARLY-STAGE BRAND PROJECT</small><strong>畲族特色茶品牌 0→1</strong><p>从文化研究、品牌方向到第一次线下市场测试。</p></div><b>CORE MEMBER<br /><em>Brand & Marketing Support</em></b><i>{openCase === "tea" ? "−" : "↘"}</i>
+          </button>
+          <button className={openCase === "theatre" ? "active" : ""} onClick={() => setOpenCase(openCase === "theatre" ? "" : "theatre")} aria-expanded={openCase === "theatre"}>
+            <span>FEATURED 03</span><div><small>THEATRE CONTENT / SOCIAL MEDIA</small><strong>从舞台到屏幕：剧目内容宣发</strong><p>参与《敦煌奇妙夜》《无人生还》的内容发布与现场记录。</p></div><b>CONTRIBUTOR<br /><em>参与执行</em></b><i>{openCase === "theatre" ? "−" : "↘"}</i>
+          </button>
+          <button className={openCase === "art" ? "active" : ""} onClick={() => setOpenCase(openCase === "art" ? "" : "art")} aria-expanded={openCase === "art"}>
+            <span>MINI CASE</span><div><small>EVENT CONTENT / ON-SITE EXECUTION</small><strong>“同绘童梦”少年艺术大展</strong><p>作品整理、展陈协助、现场执行与官方总结推送。</p></div><b>SUPPORT ROLE<br /><em>现场与内容执行</em></b><i>{openCase === "art" ? "−" : "↘"}</i>
+          </button>
+        </div>
+
+        <div className={`selected-case-body ${openCase ? "is-open" : ""}`} aria-live="polite">
+          {openCase === "bank" && <article className="case-study bank-case">
+            <header className="case-hero">
+              <div><p>FEATURED CASE 01 · CAMPAIGN PLANNING</p><h3>厅堂主题营销系列</h3><blockquote>把总行营销要求，转化为支行现场真正能执行、能与客户发生联系的主题活动。</blockquote></div>
+              <div className="case-role-stamp"><small>MY ROLE</small><b>支行活动策划<br />与执行负责人</b><span>PLANNING · CONTENT<br />COORDINATION · REVIEW</span></div>
+            </header>
+            <section className="case-overview"><h4>Overview</h4><p>基于总行营销要求，我在支行层面负责主题构思、活动方案、PPT、海报、主持稿、宣传稿、跨部门协调、现场执行及活动复盘。项目不是单次活动，而是一组围绕不同客群与营销节点持续展开的厅堂主题系列。</p></section>
+            <div className="campaign-tickets">{bankCampaigns.map((name, index) => <span key={name}><small>CAMPAIGN {String(index + 1).padStart(2, "0")}</small>{name}</span>)}</div>
+            <section className="case-process"><div className="case-section-heading"><small>PROCESS</small><h4>From brief to branch floor.</h4></div><ol>{bankProcess.map((step) => <li key={step[0]}><span>{step[0]}</span><div><small>{step[1]}</small><p>{step[2]}</p></div></li>)}</ol></section>
+            <section className="featured-campaign">
+              <div className="little-banker-visual"><span>FEATURED<br />CAMPAIGN</span><strong>小小<br /><em>银行家</em></strong><i>SUMMER · FAMILY · FINANCIAL LITERACY</i></div>
+              <div><small>SELECTED OUTPUT / 深入展示</small><h4>从亲子洞察到客户沟通</h4><p>暑期观察到客户常带孩子到店，因此将金融知识、点钞与模拟柜台体验设计成亲子活动。活动结束后，再由团队结合家长实际需求进行产品沟通和后续跟进。</p><ul><li><b>10+</b><span>到场儿童</span></li><li><b>20+</b><span>到场家长</span></li><li><b>5–6 组</b><span>活动后表达意向的客户</span></li></ul></div>
+            </section>
+            <section className="case-results"><div><small>RESULTS / CONTEXT</small><strong>1,000+</strong><p>全年累计客户触达人次</p><em>包括面销、电销、商户拜访、企业微信及主题活动等多种渠道，不作为任何单场活动数据。</em></div><div><small>LEARNING</small><p>活动策划不仅需要创意，还要同时处理合规信息、现场流程、团队协作与后续业务承接。重要对外材料也需要建立交叉审核机制。</p></div></section>
+          </article>}
+
+          {openCase === "tea" && <article className="case-study tea-case">
+            <header className="tea-hero"><div className="tea-title-card"><p>FEATURED CASE 02 · EARLY-STAGE BRAND PROJECT</p><h3>From Concept<br />to First Market.</h3><strong>从概念到第一次市场测试：<br />一个畲族特色茶品牌的 0→1 实践</strong></div><div className="tea-moodboard" aria-label="品牌前期视觉方向探索"><span className="tea-swatch clay">CULTURE</span><span className="tea-swatch leaf">TEA</span><span className="tea-swatch indigo">SHE</span><i>景宁</i><b>炒青<br />绿茶</b><small>DIRECTION STUDY<br />NOT FINAL VI</small></div></header>
+            <section className="case-overview split"><div><h4>Overview</h4><p>约 5 人小团队共同参与的早期品牌项目。项目以浙江景宁畲族文化为地域基础，将当地传统炒青绿茶与年轻、便携的小罐茶形态结合，探索面向年轻消费者的特色茶品牌。</p></div><div><h4>My Role</h4><p><b>Core Project Member / Brand &amp; Marketing Support</b><br />从早期参与定位讨论、竞品及视觉研究、Logo/字体/色彩/包装方向探索、产品及包装讨论和部分文案初稿，到第一次线下测试的摊位陈列、宣传与现场销售。</p></div></section>
+            <div className="brand-evidence-board"><div className="evidence culture-study"><small>01 · CULTURAL RESEARCH</small><strong>畲族文化<br />与地域视觉</strong><span>Pattern · Colour · Place</span></div><div className="evidence type-study"><small>02 · VISUAL EXPLORATION</small><strong>字形 / 色彩<br />包装方向</strong><span>Early team study</span></div><div className="evidence product-study"><small>03 · PRODUCT FORM</small><strong>小罐茶</strong><span>Portable · Young · Local</span></div><div className="evidence market-study"><small>04 · FIRST MARKET</small><strong>天目里</strong><span>Offline test · Hangzhou</span></div></div>
+            <section className="tea-path"><div className="case-section-heading"><small>BRAND GROWTH PATH</small><h4>Concept → Market</h4></div><ol>{teaJourney.map((step) => <li key={step[0]}><span>{step[0]}</span><div><small>{step[1]}</small><h5>{step[2]}</h5><p>{step[3]}</p></div></li>)}</ol></section>
+            <section className="case-results tea-outcome"><div><small>OUTCOME</small><h4>Brand Concept → Visual Direction → Physical Product → First Offline Market Test</h4><p>项目完成了从品牌概念到首次线下市场测试的完整早期闭环。首次测试后，我因返校而结束持续参与。</p></div><div><small>REFLECTION</small><p>这是我第一次完整接触消费品牌从概念到真实市场的早期过程，也让我开始理解：品牌不仅是视觉和故事，还需要产品、渠道、消费者反馈与持续运营共同支撑。</p></div></section>
+          </article>}
+
+          {openCase === "theatre" && <article className="case-study theatre-case">
+            <header className="case-hero"><div><p>FEATURED CASE 03 · THEATRE CONTENT</p><h3>从舞台到屏幕</h3><blockquote>参与《敦煌奇妙夜》《无人生还》的内容宣发，让剧场内外的故事拥有连续的传播节奏。</blockquote></div><div className="theatre-bill"><small>PROGRAMME</small><strong>敦煌奇妙夜</strong><i>×</i><strong>无人生还</strong><span>CONTENT · PHOTO · DATA</span></div></header>
+            <section className="case-overview split"><div><h4>Overview</h4><p>参与剧目宣传推送、公众号发布、图片处理、后台数据整理、现场摄影和演后总结内容。</p></div><div><h4>My Role</h4><p><b>Content &amp; Social Media Contributor</b><br />以参与执行为主，在既有传播节奏中完成内容、图片与现场记录工作，不将该项目包装为个人主导。</p></div></section>
+            <div className="theatre-workflow"><article><span>BEFORE</span><h4>演前内容</h4><p>宣传推送、素材整理、公众号发布与图片处理。</p></article><article><span>DURING</span><h4>现场记录</h4><p>现场摄影、演出节点记录与内容素材补充。</p></article><article><span>AFTER</span><h4>演后总结</h4><p>后台数据整理、总结推送与内容归档。</p></article></div>
+            <section className="theatre-spotlight"><span>PROACTIVE CONTENT TRY</span><div><small>《敦煌奇妙夜》</small><h4>把镜头转向演员幕后故事</h4><p>在常规剧目宣传之外，主动增加“演员幕后故事”内容，以人物视角补充舞台之外的情绪和细节。这次尝试让我开始思考：文化内容的传播不只依赖演出信息，也来自观众愿意靠近的人与故事。</p></div></section>
+            <section className="case-results"><div><small>SELECTED OUTPUTS</small><p>公众号推送 · 图片处理 · 现场摄影 · 后台数据整理 · 演后总结内容</p></div><div><small>LEARNING</small><p>理解一场剧目的内容宣发如何沿着演前、演中、演后的时间线展开，也学习在团队流程中主动寻找更有人物感的内容角度。</p></div></section>
+          </article>}
+
+          {openCase === "art" && <article className="case-study mini-art-case">
+            <header><p>MINI CASE · EVENT CONTENT / ON-SITE EXECUTION</p><h3>“同绘童梦”少年艺术大展</h3></header><div className="mini-case-grid"><div className="art-number"><strong>≈300</strong><span>幅少年艺术作品<br />分类整理与展陈准备</span></div><div><h4>Overview</h4><p>参与作品分类整理、展陈准备、现场摄影、嘉宾引导及颁奖协助。</p><h4>Selected Output</h4><p>活动结束后独立完成总结推送，包括文案撰写、图片选择与页面排版，最终由官方渠道发布。</p><h4>Learning</h4><p>大型线下活动中，细致的现场支持与及时的内容沉淀同样重要。</p></div></div>
+          </article>}
         </div>
       </section>
 
