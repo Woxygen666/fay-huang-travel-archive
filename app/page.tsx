@@ -512,7 +512,20 @@ export default function Home() {
           </article>}
 
           {openCase === "art" && <article className="case-study mini-art-case">
-            <header><p>MINI CASE · EVENT CONTENT / ON-SITE EXECUTION</p><h3>“同绘童梦”少年艺术大展</h3></header><div className="mini-case-grid"><div className="art-number"><strong>≈300</strong><span>幅少年艺术作品<br />分类整理与展陈准备</span></div><div><h4>Overview</h4><p>参与作品分类整理、展陈准备、现场摄影、嘉宾引导及颁奖协助。</p><h4>Selected Output</h4><p>活动结束后独立完成总结推送，包括文案撰写、图片选择与页面排版，最终由官方渠道发布。</p><h4>Learning</h4><p>大型线下活动中，细致的现场支持与及时的内容沉淀同样重要。</p></div></div>
+            <header><p>MINI CASE · EVENT CONTENT / ON-SITE EXECUTION</p><h3>“同绘童梦”少年艺术大展</h3><em>From exhibition floor to published story.</em></header>
+            <div className="mini-case-grid">
+              <figure className="art-hero-photo"><img src={asset("/cases/art/exhibition-setup.jpg")} alt="同绘童梦少年艺术大展作品展墙与现场布置" /><figcaption><strong>~300 ARTWORKS</strong><span>YOUTH ART EXHIBITION</span></figcaption></figure>
+              <div className="art-case-copy">
+                <section><small>MY ROLE</small><h4>Event Content &amp; On-site Execution</h4><p>参与约 300 幅参展作品的分类整理与展陈准备，并负责现场摄影、嘉宾引导及颁奖协助。</p></section>
+                <section className="art-contribution"><small>CONTRIBUTION</small><dl><div><dt>BEFORE</dt><dd>作品分类 · 展陈准备</dd></div><div><dt>ON SITE</dt><dd>现场摄影 · 嘉宾引导 · 颁奖协助</dd></div><div><dt>AFTER</dt><dd>文案撰写 · 图片筛选 · 官方推送排版</dd></div></dl></section>
+                <section><small>SELECTED OUTPUT</small><h4>Official Event Recap</h4><p>活动结束后独立完成总结推送的文案撰写、现场照片筛选及页面排版，最终由官方公众号发布。</p></section>
+              </div>
+            </div>
+            <section className="event-to-content">
+              <div className="case-section-heading"><small>FROM EVENT TO CONTENT</small><h4>现场发生的事，如何成为一篇可发布的故事。</h4></div>
+              <div className="event-content-flow"><div className="event-evidence-grid"><figure><img src={asset("/cases/art/award-support.jpg")} alt="作为颁奖工作人员参与少年艺术大展现场" /><figcaption>ON-SITE SUPPORT</figcaption></figure><figure><img src={asset("/cases/art/live-performance.jpg")} alt="少年艺术大展现场演出与观众" /><figcaption>FIELD NOTES</figcaption></figure><figure><img src={asset("/cases/art/event-board.jpg")} alt="同绘童梦少年艺术大展活动展板" /><figcaption>VISUAL CONTEXT</figcaption></figure></div><div className="flow-arrow" aria-hidden="true">→</div><figure className="published-recap"><div className="phone-frame"><img src={asset("/cases/art/official-recap.jpg")} alt="同绘童梦少年艺术大展官方公众号总结推送" /></div><figcaption><small>PUBLISHED</small><strong>Official Event Recap</strong><span>Copy · Photo Selection · Layout</span></figcaption></figure></div>
+              <ol className="event-process"><li>FIELD NOTES</li><li>PHOTO SELECTION</li><li>COPY &amp; LAYOUT</li><li>PUBLISHED</li></ol>
+            </section>
           </article>}
         </div>
       </section>
