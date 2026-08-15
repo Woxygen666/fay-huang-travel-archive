@@ -87,7 +87,12 @@ const commerceJourney = [
   ["07", "FULFILLMENT", "订单 → 包装 → 发货 → 售后", "完成订单管理、包装、物流和售后，让创意真正抵达用户手中。"],
 ];
 
-const bankCampaigns = ["银发暖心堂", "螺钿绮梦，杭银相伴", "贵宾客户尊享会", "小小银行家"];
+const bankCampaigns = [
+  { name: "银发暖心堂", tag: "SENIOR CUSTOMER ENGAGEMENT", image: "/cases/bank/silver-care.jpg" },
+  { name: "螺钿绮梦，杭银相伴", tag: "CULTURAL EXPERIENCE", image: "/cases/bank/luodian.jpg" },
+  { name: "贵宾客户尊享会", tag: "VIP CUSTOMER EVENT", image: "/cases/bank/vip-event.jpg" },
+  { name: "小小银行家", tag: "FAMILY FINANCIAL LITERACY", image: "/cases/bank/little-banker.jpg" },
+];
 const bankProcess = [
   ["01", "CONCEPT", "基于总行营销要求与支行客群，确定月度主题与活动切入点。"],
   ["02", "PLAN", "撰写活动方案、PPT、主持稿与人员分工，明确现场流程。"],
@@ -460,10 +465,10 @@ export default function Home() {
               <div className="case-role-stamp"><small>MY ROLE</small><b>支行活动策划<br />与执行负责人</b><span>PLANNING · CONTENT<br />COORDINATION · REVIEW</span></div>
             </header>
             <section className="case-overview"><h4>Overview</h4><p>基于总行营销要求，我在支行层面负责主题构思、活动方案、PPT、海报、主持稿、宣传稿、跨部门协调、现场执行及活动复盘。项目不是单次活动，而是一组围绕不同客群与营销节点持续展开的厅堂主题系列。</p></section>
-            <div className="campaign-tickets">{bankCampaigns.map((name, index) => <span key={name}><small>CAMPAIGN {String(index + 1).padStart(2, "0")}</small>{name}</span>)}</div>
+            <div className="campaign-tickets">{bankCampaigns.map((campaign, index) => <figure className="campaign-ticket-photo" key={campaign.name}><img src={asset(campaign.image)} alt={`${campaign.name}活动记录`} /><figcaption><small>CAMPAIGN {String(index + 1).padStart(2, "0")}</small><strong>{campaign.name}</strong><span>{campaign.tag}</span></figcaption></figure>)}</div>
             <section className="case-process"><div className="case-section-heading"><small>PROCESS</small><h4>From brief to branch floor.</h4></div><ol>{bankProcess.map((step) => <li key={step[0]}><span>{step[0]}</span><div><small>{step[1]}</small><p>{step[2]}</p></div></li>)}</ol></section>
             <section className="featured-campaign">
-              <div className="little-banker-visual"><span>FEATURED<br />CAMPAIGN</span><strong>小小<br /><em>银行家</em></strong><i>SUMMER · FAMILY · FINANCIAL LITERACY</i></div>
+              <figure className="little-banker-photo"><img src={asset("/cases/bank/little-banker.jpg")} alt="小小银行家亲子金融启蒙活动现场" /><figcaption><span>FEATURED CAMPAIGN</span><strong>小小银行家</strong><i>SUMMER · FAMILY · FINANCIAL LITERACY</i></figcaption></figure>
               <div><small>SELECTED OUTPUT / 深入展示</small><h4>从亲子洞察到客户沟通</h4><p>暑期观察到客户常带孩子到店，因此将金融知识、点钞与模拟柜台体验设计成亲子活动。活动结束后，再由团队结合家长实际需求进行产品沟通和后续跟进。</p><ul><li><b>10+</b><span>到场儿童</span></li><li><b>20+</b><span>到场家长</span></li><li><b>5–6 组</b><span>活动后表达意向的客户</span></li></ul></div>
             </section>
             <section className="case-results"><div><small>RESULTS / CONTEXT</small><strong>1,000+</strong><p>全年累计客户触达人次</p><em>包括面销、电销、商户拜访、企业微信及主题活动等多种渠道，不作为任何单场活动数据。</em></div><div><small>LEARNING</small><p>活动策划不仅需要创意，还要同时处理合规信息、现场流程、团队协作与后续业务承接。重要对外材料也需要建立交叉审核机制。</p></div></section>
