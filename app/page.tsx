@@ -451,10 +451,10 @@ export default function Home() {
             <span>FEATURED 02</span><div><small>CAMPAIGN PLANNING / CUSTOMER ENGAGEMENT</small><strong>厅堂主题营销系列</strong><p>支行层面的主题策划、内容物料、协同执行与活动复盘。</p></div><b>CORE OWNER<br /><em>支行执行层面</em></b><i>{openCase === "bank" ? "−" : "↘"}</i>
           </button>
           <button className={openCase === "theatre" ? "active" : ""} onClick={() => setOpenCase(openCase === "theatre" ? "" : "theatre")} aria-expanded={openCase === "theatre"}>
-            <span>FEATURED 03</span><div><small>THEATRE CONTENT / SOCIAL MEDIA</small><strong>从舞台到屏幕：剧目内容宣发</strong><p>参与《敦煌奇妙夜》《无人生还》的内容发布与现场记录。</p></div><b>CONTRIBUTOR<br /><em>参与执行</em></b><i>{openCase === "theatre" ? "−" : "↘"}</i>
+            <span>FEATURED 03</span><div><small>THEATRE CONTENT / SOCIAL MEDIA</small><strong>从舞台到屏幕：剧目内容宣发</strong><p>参与《敦煌奇妙夜》《无人生还》等剧目的内容发布与现场记录。</p></div><b>CONTENT MARKETING<br /><em>Social Media Intern</em></b><i>{openCase === "theatre" ? "−" : "↘"}</i>
           </button>
           <button className={openCase === "art" ? "active" : ""} onClick={() => setOpenCase(openCase === "art" ? "" : "art")} aria-expanded={openCase === "art"}>
-            <span>MINI CASE</span><div><small>EVENT CONTENT / ON-SITE EXECUTION</small><strong>“同绘童梦”少年艺术大展</strong><p>作品整理、展陈协助、现场执行与官方总结推送。</p></div><b>SUPPORT ROLE<br /><em>现场与内容执行</em></b><i>{openCase === "art" ? "−" : "↘"}</i>
+            <span>MINI CASE</span><div><small>EVENT CONTENT / ON-SITE EXECUTION</small><strong>“同绘童梦”少年艺术大展</strong><p>作品整理、展陈准备、现场执行与官方总结推送。</p></div><b>EVENT CONTENT<br /><em>On-site Operations</em></b><i>{openCase === "art" ? "−" : "↘"}</i>
           </button>
         </div>
 
@@ -479,7 +479,7 @@ export default function Home() {
               <div className="tea-title-card"><p>FEATURED CASE 01 · EARLY-STAGE BRAND PROJECT</p><h3>浮光凝露<br /><em>From Origin to Market.</em></h3><strong>畲族特色茶品牌的 0→1 实践：<br />从景宁茶山到杭州第一次市场测试</strong></div>
               <figure className="tea-cover-photo"><img src={asset("/cases/tea/origin-fieldwork.jpg")} alt="景宁茶园、鲜叶、茶工厂与实地考察记录" /><figcaption>JINGNING FIELD NOTES · TEA GARDEN / FACTORY / TASTING</figcaption></figure>
             </header>
-            <section className="case-overview split"><div><h4>Overview</h4><p>约 5 人小团队共同参与的早期品牌项目。项目以浙江景宁畲族文化为地域基础，将与惠明茶同源的金奖绿茶、红茶和年轻便携的小罐形态结合，探索面向年轻消费者的特色茶品牌“浮光凝露”。</p></div><div><h4>My Role</h4><p><b>Core Project Member / Brand &amp; Marketing Support</b><br />参与实地与市场研究、定位讨论、竞品及视觉研究、Logo / 字体 / 色彩 / 包装方向探索、产品讨论、部分品牌文案初稿，以及天目里测试的陈列、宣传、销售与消费者沟通。最终视觉由专业设计师深化，并非由我独立设计。</p></div></section>
+            <section className="case-overview split"><div><h4>Overview</h4><p>约 5 人小团队共同参与的早期品牌项目。项目以浙江景宁畲族文化为地域基础，将与惠明茶同源的金奖绿茶、红茶和年轻便携的小罐形态结合，探索面向年轻消费者的特色茶品牌“浮光凝露”。</p></div><div><h4>My Role</h4><p><b>Core Project Member / Brand &amp; Marketing Support</b><br />参与实地与市场研究、定位讨论、竞品及视觉研究、Logo / 字体 / 色彩 / 包装方向探索、产品讨论、部分品牌文案初稿，以及天目里测试的陈列、宣传、销售与消费者沟通；并将团队前期方向与专业设计师的视觉深化工作衔接落地。</p></div></section>
 
             <div className="brand-evidence-board photo-evidence-board">
               <figure className="evidence"><img src={asset("/cases/tea/she-textile.jpg")} alt="畲族织带纹样研究" /><figcaption><small>01 · CULTURE</small><strong>畲族纹样</strong><span>Pattern · Colour · Place</span></figcaption></figure>
@@ -500,10 +500,14 @@ export default function Home() {
           </article>}
 
           {openCase === "theatre" && <article className="case-study theatre-case">
-            <header className="case-hero"><div><p>FEATURED CASE 03 · THEATRE CONTENT</p><h3>从舞台到屏幕</h3><blockquote>参与《敦煌奇妙夜》《无人生还》的内容宣发，让剧场内外的故事拥有连续的传播节奏。</blockquote></div><div className="theatre-bill"><small>PROGRAMME</small><strong>敦煌奇妙夜</strong><i>×</i><strong>无人生还</strong><span>CONTENT · PHOTO · DATA</span></div></header>
-            <section className="case-overview split"><div><h4>Overview</h4><p>参与剧目宣传推送、公众号发布、图片处理、后台数据整理、现场摄影和演后总结内容。</p></div><div><h4>My Role</h4><p><b>Content &amp; Social Media Contributor</b><br />以参与执行为主，在既有传播节奏中完成内容、图片与现场记录工作，不将该项目包装为个人主导。</p></div></section>
-            <div className="theatre-workflow"><article><span>BEFORE</span><h4>演前内容</h4><p>宣传推送、素材整理、公众号发布与图片处理。</p></article><article><span>DURING</span><h4>现场记录</h4><p>现场摄影、演出节点记录与内容素材补充。</p></article><article><span>AFTER</span><h4>演后总结</h4><p>后台数据整理、总结推送与内容归档。</p></article></div>
-            <section className="theatre-spotlight"><span>PROACTIVE CONTENT TRY</span><div><small>《敦煌奇妙夜》</small><h4>把镜头转向演员幕后故事</h4><p>在常规剧目宣传之外，主动增加“演员幕后故事”内容，以人物视角补充舞台之外的情绪和细节。这次尝试让我开始思考：文化内容的传播不只依赖演出信息，也来自观众愿意靠近的人与故事。</p></div></section>
+            <header className="case-hero"><div><p>FEATURED CASE 03 · THEATRE CONTENT</p><h3>从舞台到屏幕</h3><blockquote>参与《敦煌奇妙夜》《无人生还》等剧目的内容宣发，让剧场内外的故事拥有连续的传播节奏。</blockquote></div><figure className="theatre-program-photo"><img src={asset("/cases/theatre/programme-stage.jpg")} alt="敦煌奇妙夜舞台现场" /></figure></header>
+            <section className="case-overview split"><div><h4>Overview</h4><p>围绕剧目演前、现场与演后三个阶段，完成宣传内容制作、视觉素材处理、现场内容采集、公众号发布及传播数据整理。</p></div><div><h4>My Role</h4><p><b>Content Marketing &amp; Social Media Intern</b><br />参与剧目全周期内容宣发执行，负责公众号内容制作与发布、视觉素材处理、现场内容采集及传播数据整理，并结合演出现场素材完成演后内容沉淀。</p></div></section>
+            <div className="theatre-workflow">
+              <article><figure><img src={asset("/cases/theatre/before-show.jpg")} alt="无人生还演前宣传海报" /></figure><div><span>BEFORE</span><h4>演前内容</h4><p>宣传推送、素材整理、公众号发布与图片处理。</p></div></article>
+              <article><figure><img src={asset("/cases/theatre/live-record.jpg")} alt="敦煌奇妙夜现场演出记录" /></figure><div><span>DURING</span><h4>现场记录</h4><p>现场摄影、演出节点记录与内容素材补充。</p></div></article>
+              <article><figure><img src={asset("/cases/theatre/after-show.jpg")} alt="敦煌奇妙夜演后总结推送" /></figure><div><span>AFTER</span><h4>演后总结</h4><p>后台数据整理、总结推送与内容归档。</p></div></article>
+            </div>
+            <section className="theatre-spotlight"><figure><img src={asset("/cases/theatre/backstage-story.jpg")} alt="演员幕后故事内容页面" /></figure><div><span>PROACTIVE CONTENT TRY</span><small>《敦煌奇妙夜》</small><h4>把镜头转向演员幕后故事</h4><p>在常规剧目宣传之外，主动增加“演员幕后故事”内容，以人物视角补充舞台之外的情绪和细节。这次尝试让我开始思考：文化内容的传播不只依赖演出信息，也来自观众愿意靠近的人与故事。</p></div></section>
             <section className="case-results"><div><small>SELECTED OUTPUTS</small><p>公众号推送 · 图片处理 · 现场摄影 · 后台数据整理 · 演后总结内容</p></div><div><small>LEARNING</small><p>理解一场剧目的内容宣发如何沿着演前、演中、演后的时间线展开，也学习在团队流程中主动寻找更有人物感的内容角度。</p></div></section>
           </article>}
 
