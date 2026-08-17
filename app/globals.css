@@ -308,6 +308,37 @@ button { cursor:pointer; }
   .sop-journey li{grid-template-columns:42px 1fr;gap:13px;padding:22px 0}.sop-journey>li>span{font-size:24px}.sop-journey h5{font-size:17px;line-height:1.3}.sop-journey i{display:none}
 }
 
+/* Youth art exhibition: keep every image self-explanatory for recruiter review. */
+.art-case-intro{max-width:780px;margin-top:18px;font-family:Georgia,serif;font-size:13px;line-height:1.75;color:#486b7c}
+.art-hero-photo{min-height:0;padding:10px 10px 0;overflow:visible}
+.art-hero-frame{position:relative;height:430px;overflow:hidden;background:#c4d8dc}
+.art-hero-photo .art-hero-frame img{width:100%;height:100%;min-height:0;object-fit:cover}
+.art-scale-label{position:absolute;right:18px;bottom:18px;display:flex;flex-direction:column;gap:3px;padding:11px 14px;background:rgba(247,242,228,.93);color:var(--navy);box-shadow:3px 3px 0 rgba(20,59,86,.2)}
+.art-scale-label strong,.art-scale-label i{font-size:8px;line-height:1.35;letter-spacing:1.5px;font-style:normal}
+.art-hero-photo>figcaption{position:static;display:block;padding:18px 12px 20px;background:#fff;box-shadow:none;color:var(--navy)}
+.art-hero-photo>figcaption strong{display:block;margin-bottom:7px;font-family:Georgia,serif;font-size:19px;letter-spacing:0;font-weight:normal}
+.art-hero-photo>figcaption p{margin:0;font-family:Georgia,serif;font-size:11px;line-height:1.7;color:#557786}
+.event-evidence-grid{grid-template-rows:auto auto;align-items:stretch}
+.event-evidence-grid figure{position:relative;display:flex;flex-direction:column;overflow:visible;background:#f8f4e8}
+.event-evidence-grid figure:first-child{grid-row:1/3}
+.event-image-frame{position:relative;height:180px;overflow:hidden;background:#c4d8dc}
+.event-evidence-grid figure:first-child .event-image-frame{height:370px}
+.event-image-frame img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.event-evidence-grid figure:hover .event-image-frame img{transform:scale(1.035)}
+.event-image-frame span{position:absolute;left:10px;bottom:10px;padding:6px 8px;background:rgba(247,242,228,.9);font-size:7px;letter-spacing:1.4px;color:var(--navy)}
+.event-evidence-grid figure>figcaption{position:static;display:block;padding:12px 12px 14px;background:#f8f4e8;letter-spacing:0}
+.event-evidence-grid figure>figcaption strong{display:block;margin-bottom:5px;font-family:Georgia,serif;font-size:14px;font-weight:normal;color:var(--navy)}
+.event-evidence-grid figure>figcaption p,.published-recap figcaption p{margin:0;font-family:Georgia,serif;font-size:9px;line-height:1.65;color:#557786}
+.published-recap figcaption{gap:6px}
+.published-recap figcaption p{margin-top:5px}
+
+@media (max-width:900px){
+  .art-hero-frame{height:360px}.event-evidence-grid{grid-template-rows:auto auto}.event-evidence-grid figure:first-child .event-image-frame{height:350px}.event-image-frame{height:170px}
+}
+@media (max-width:640px){
+  .art-case-intro{font-size:11.5px}.art-hero-photo{min-height:0}.art-hero-frame{height:300px}.art-hero-photo .art-hero-frame img{min-height:0}.art-scale-label{right:10px;bottom:10px}.event-evidence-grid{grid-template-columns:1fr;grid-template-rows:auto}.event-evidence-grid figure:first-child{grid-row:auto}.event-evidence-grid figure:first-child .event-image-frame,.event-image-frame{height:230px}.event-evidence-grid figure>figcaption p,.published-recap figcaption p{font-size:10px}
+}
+
 @media (max-width:900px){
   .case-index>button{grid-template-columns:85px 1fr 28px}.case-index>button>b{display:none}
   .case-hero,.tea-hero{grid-template-columns:1fr}.case-role-stamp{width:230px}.tea-moodboard{min-height:360px}
