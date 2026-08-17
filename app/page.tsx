@@ -207,6 +207,11 @@ export default function Home() {
     }, 420);
   };
 
+  const openJourneyCase = (caseId: string) => {
+    setOpenCase(caseId);
+    travelTo("projects");
+  };
+
   return (
     <main>
       <div className={`flight-transition ${transitioning ? "is-flying" : ""}`} aria-hidden="true"><Plane /><i /></div>
@@ -532,16 +537,40 @@ export default function Home() {
 
       <FlightDivider number="05" label={<>TRACE THE<br />JOURNEY</>} title="THE ROUTE" subtitle="journey so far" />
 
-      <section id="experience" className="section route-section">
+      <section id="experience" className="section route-section journey-section">
         <SectionTitle number="05" kicker="THE JOURNEY SO FAR" title={<>Every stop taught me<br /><em>something new.</em></>} />
-        <div className="timeline">
-          <div className="timeline-line"><Plane /></div>
-          {[
-            ["2019—23", "JOURNALISM · 浙大城市学院", "统筹 4 场校级春秋招宣传，并在电视台与文化行业开始内容、短视频和活动策划实践。"],
-            ["2023—24", "MARKETING · UNIVERSITY OF SOUTHAMPTON", "在英国完成时尚市场营销与品牌硕士，用英文研究消费者洞察、数字营销与品牌传播。"],
-            ["2025—26", "CUSTOMER MARKETING · 杭州银行", "围绕全年营销节点策划主题活动，搭建三层客户触达漏斗，并产出 40+ 篇营销与品牌内容。"],
-            ["NOW", "NEXT DESTINATION", "寻找旅游、品牌、内容与真实用户体验相遇的下一站。"],
-          ].map((item, index) => <article key={item[0]} className={index % 2 ? "right" : "left"}><i /><span>{item[0]}</span><div><p>{item[1]}</p><h3>{item[2]}</h3><button>VIEW CHAPTER ↗</button></div></article>)}
+        <div className="journey-sequence" aria-label="成长路径"><span>OBSERVE</span><i>→</i><span>CREATE</span><i>→</i><span>UNDERSTAND</span><i>→</i><span>EXPLORE</span><i>→</i><span>EXECUTE</span><i>→</i><span>NEXT</span></div>
+        <div className="journey-timeline">
+          <div className="journey-route" aria-hidden="true"><Plane /></div>
+
+          <article className="journey-stop journey-left">
+            <i className="journey-pin" /><div className="journey-career-card"><small>01 · 2019–2023 / JOURNALISM</small><p className="journey-growth">OBSERVE <em>· Learning to notice.</em></p><h3>从观察故事，到学习如何让内容发生。</h3><p>新闻学训练建立了我对人物、文化与内容的敏感度。在校期间参与并统筹 4 场校级大型春秋招聘活动宣发，负责宣传方案、内容制作与跨团队协作；同时通过文化与媒体行业实践，第一次将内容创作带入真实传播场景。</p><div className="journey-tags"><span>EDITORIAL</span><span>STORYTELLING</span><span>CAMPAIGNS</span></div></div>
+            <figure className="journey-archive archive-campus"><div className="archive-stack"><img src={asset("/journey/journalism-team.jpg")} alt="2021 届毕业生招聘会校园团队合照" /><img src={asset("/journey/recruitment-badge.jpg")} alt="春季招聘会工作证与现场相机" /></div><figcaption><b>04 CAMPAIGNS</b><span>CAMPUS RECRUITMENT · 2021</span><small>One of four campus-wide recruitment campaigns.</small></figcaption></figure>
+          </article>
+
+          <article className="journey-stop journey-right">
+            <i className="journey-pin" /><div className="journey-career-card"><small>02 · EARLY EXPERIENCE / CONTENT IN THE REAL WORLD</small><p className="journey-growth">CREATE <em>· Learning by doing.</em></p><h3>第一次让内容离开课堂。</h3><p>从剧目宣发、城市文化活动到早期品牌项目，我开始参与公众号内容、视觉素材、现场传播与活动执行，也第一次接触消费品牌从概念形成到真实市场测试的过程。</p><div className="journey-tags"><span>CULTURE</span><span>SOCIAL MEDIA</span><span>BRAND</span></div><button className="journey-link" onClick={() => travelTo("projects")}>EXPLORE SELECTED CASES ↗</button></div>
+            <figure className="journey-archive archive-duo"><div><img src={asset("/journey/theatre-poster.png")} alt="敦煌奇妙夜剧目宣传物料" /><span>THEATRE CONTENT</span></div><div><img src={asset("/journey/tea-stall.jpg")} alt="浮光凝露茶品牌线下市场摊位" /><span>FIRST MARKET TEST</span></div></figure>
+          </article>
+
+          <article className="journey-stop journey-left">
+            <i className="journey-pin" /><div className="journey-career-card"><small>03 · 2023–2024 / UNIVERSITY OF SOUTHAMPTON</small><p className="journey-growth">UNDERSTAND <em>· Turning instinct into strategy.</em></p><h3>从“什么内容吸引人”，到理解“为什么它有效”。</h3><p>在英国完成时尚市场营销与品牌硕士，将过去偏感性的内容经验带入消费者洞察、数字营销与品牌传播框架，也第一次长期置身跨文化环境，观察不同文化语境中的品牌、消费者与传播方式。</p><div className="journey-tags"><span>CONSUMER INSIGHT</span><span>BRAND STRATEGY</span><span>CROSS-CULTURAL</span></div></div>
+            <figure className="journey-archive archive-southampton"><img src={asset("/journey/southampton-campus.jpg")} alt="南安普顿大学校园建筑" /><img src={asset("/journey/southampton-classroom.jpg")} alt="南安普顿大学课堂学习现场" /><figcaption>SOUTHAMPTON · 2023–2024</figcaption></figure>
+          </article>
+
+          <article className="journey-stop journey-right journey-travel-stop">
+            <i className="journey-pin" /><div className="journey-career-card"><small>04 · ALONG THE WAY / TRAVEL</small><p className="journey-growth">EXPLORE <em>· Learning to stay curious.</em></p><h3>在工作之外，继续观察世界。</h3><p>旅行让我持续练习理解陌生的人、文化与生活方式。从欧洲到北非、亚洲与大洋洲，它逐渐成为我观察用户、视觉文化与地方故事的另一种方式，也是我持续关注旅游、内容与品牌体验的重要原因。</p><div className="journey-tags"><span>PEOPLE</span><span>PLACES</span><span>CULTURE</span></div><button className="journey-link" onClick={() => travelTo("map")}>VIEW DESTINATIONS ↗</button></div>
+            <figure className="journey-archive archive-travel"><img src={asset("/travel/travel-031.jpg")} alt="旅途中记录的目的地照片" /><img src={asset("/travel/travel-045.jpg")} alt="旅行档案中的自然风景" /><figcaption><span>PLACES · PEOPLE · LITTLE OBSERVATIONS</span><b>ALONG THE WAY</b></figcaption></figure>
+          </article>
+
+          <article className="journey-stop journey-left">
+            <i className="journey-pin" /><div className="journey-career-card"><small>05 · 2025–2026 / HANGZHOU BANK</small><p className="journey-growth">EXECUTE <em>· Learning to make ideas happen.</em></p><h3>第一次真正把内容、客户与业务结果连接起来。</h3><p>将过去的内容与营销能力带入真实业务场景，从客户触达、主题策划到跨条线推动执行；围绕全年营销节点持续策划厅堂主题活动，通过面销、电销、商户拜访、企业微信及活动等渠道累计完成 1,000+ 客户触达人次，并持续产出营销与品牌内容。</p><div className="journey-tags"><span>CUSTOMER</span><span>CAMPAIGN</span><span>EXECUTION</span></div><button className="journey-link" onClick={() => openJourneyCase("bank")}>EXPLORE CASE ↗</button></div>
+            <figure className="journey-archive archive-bank"><div className="archive-stack"><img src={asset("/journey/trainer-stage.jpg")} alt="杭州银行内部讲师大赛团队赛现场" /><img src={asset("/journey/trainer-team.jpg")} alt="内部讲师大赛团队合照" /></div><figcaption><small>BEYOND THE ROLE</small><b>TEAM 3RD PLACE</b><span>Internal Trainer Competition · Hangzhou Bank</span><em>PRESENTATION · TEAMWORK</em></figcaption></figure>
+          </article>
+
+          <article className="journey-stop journey-right journey-now journey-final">
+            <i className="journey-pin" /><div className="journey-career-card"><small>06 · NOW / THE NEXT DESTINATION</small><p className="journey-growth">NEXT <em>· Where to next?</em></p><h3>寻找品牌、内容与真实体验相遇的下一站。</h3><p>希望继续走向 Brand Marketing / Content Marketing / Campaign Planning，尤其期待旅游、生活方式与国际化品牌环境，把对人和文化的观察转化为真正有人愿意参与、分享和记住的体验。</p><div className="journey-actions"><a href={asset("/fay-huang-resume-travel-marketing.pdf")} download>VIEW RESUME ↗</a><button onClick={() => travelTo("contact")}>LET&apos;S TALK ↗</button></div></div>
+          </article>
         </div>
       </section>
 

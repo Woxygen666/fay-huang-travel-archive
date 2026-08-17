@@ -397,3 +397,61 @@ button { cursor:pointer; }
   .tea-cover-photo{min-height:360px;border-width:7px}.photo-evidence-board .evidence{min-height:210px}.photo-evidence-board .evidence strong{font-size:18px}
   .tea-editorial-path .tea-stage,.tea-stage-market{grid-template-columns:40px 1fr!important;gap:12px;padding:28px 0}.tea-editorial-path .tea-stage>span{font-size:22px}.tea-stage-copy h5{font-size:20px}.tea-stage-copy p{font-size:10.5px}.tea-stage-media,.market-photo-sequence{height:330px}.tea-stage-media.split-media,.tea-stage-media.editorial-pair{grid-template-columns:1fr 1fr}.market-photo-sequence{grid-column:1/-1;height:auto;grid-template-columns:1fr;grid-template-rows:270px 210px 210px}.market-photo-sequence figure:first-child{grid-row:auto}.tea-stage-review .tea-stage-media{height:330px}.tea-outcome h4{font-size:21px}
 }
+
+/* Career narrative — a route of work, travel and collected evidence. */
+.journey-section{position:relative;overflow:hidden;padding-bottom:150px;background-color:#edf3f1;background-image:linear-gradient(rgba(20,59,86,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(20,59,86,.045) 1px,transparent 1px);background-size:72px 72px}
+.journey-section:before{content:"PERSONAL ROUTE · VOL. 01";position:absolute;right:3.5vw;top:150px;color:rgba(20,59,86,.2);font-size:7px;letter-spacing:2.4px;writing-mode:vertical-rl}
+.journey-sequence{display:flex;align-items:center;justify-content:center;gap:13px;margin:34px auto 85px;color:var(--navy);font-size:7px;letter-spacing:1.8px;white-space:nowrap}
+.journey-sequence span{padding:8px 12px;border:1px solid rgba(20,59,86,.32);border-radius:999px;background:rgba(255,250,240,.62)}
+.journey-sequence i{font-style:normal;color:#d16f4d}
+.journey-timeline{position:relative;max-width:1260px;margin:0 auto;padding:0 38px}
+.journey-route{position:absolute;left:50%;top:12px;bottom:55px;width:2px;transform:translateX(-50%);background:linear-gradient(#d16f4d,#88b9c7 18%,#143b56 80%,#d16f4d)}
+.journey-route:before{content:"✈";position:sticky;display:block;top:48vh;width:40px;margin-left:-19px;padding:6px 0;color:#143b56;background:#edf3f1;text-align:center;font-size:22px;line-height:1;transform:rotate(90deg)}
+.journey-stop{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 92px minmax(0,1fr);align-items:center;min-height:500px;margin:0 0 74px}
+.journey-pin{position:absolute;z-index:3;left:50%;top:50%;width:17px;height:17px;transform:translate(-50%,-50%);border:4px solid #edf3f1;border-radius:50%;background:#d16f4d;box-shadow:0 0 0 1px #143b56}
+.journey-career-card{position:relative;z-index:2;width:min(100%,520px);padding:42px 42px 36px;border:1px solid rgba(20,59,86,.3);background:rgba(255,250,240,.94);box-shadow:10px 12px 0 rgba(20,59,86,.09)}
+.journey-left .journey-career-card{grid-column:1;justify-self:end;transform:rotate(-.45deg)}
+.journey-right .journey-career-card{grid-column:3;justify-self:start;transform:rotate(.4deg)}
+.journey-career-card>small{display:block;margin-bottom:18px;color:#557786;font-size:7px;letter-spacing:2px}
+.journey-growth{margin:0 0 16px!important;color:#d16f4d!important;font-size:8px!important;font-weight:700;letter-spacing:1.9px;text-transform:uppercase}
+.journey-growth em{font-family:Georgia,serif;font-weight:400;letter-spacing:.2px;text-transform:none}
+.journey-career-card h3{margin:0 0 18px;font-family:Georgia,"Noto Serif SC",serif;font-size:29px;font-weight:400;line-height:1.25;color:var(--navy)}
+.journey-career-card>p:not(.journey-growth){margin:0;color:#496a79;font-family:Georgia,"Noto Serif SC",serif;font-size:11.5px;line-height:1.85}
+.journey-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px}
+.journey-tags span{padding:7px 10px;border:1px solid rgba(20,59,86,.34);border-radius:999px;color:var(--navy);font-size:6px;letter-spacing:1.25px}
+.journey-link{margin-top:24px;padding:0 0 7px;border:0;border-bottom:1px solid var(--navy);background:none;color:var(--navy);font-size:7px;font-weight:700;letter-spacing:1.7px;cursor:pointer;transition:color .25s,border-color .25s,transform .25s}
+.journey-link:hover{color:#d16f4d;border-color:#d16f4d;transform:translateX(4px)}
+.journey-archive{position:relative;z-index:1;width:min(88%,410px);margin:0}
+.journey-left .journey-archive{grid-column:3;justify-self:start;margin-left:28px}
+.journey-right .journey-archive{grid-column:1;grid-row:1;justify-self:end;margin-right:28px}
+.journey-archive img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(.96)}
+.journey-archive figcaption{margin-top:16px;color:#456779;font-size:7px;line-height:1.6;letter-spacing:1.35px}
+.journey-archive figcaption b,.journey-archive figcaption span,.journey-archive figcaption small{display:block}
+.journey-archive figcaption b{margin-bottom:4px;color:#d16f4d;font-size:8px;letter-spacing:2px}
+.journey-archive figcaption small{margin-top:3px;opacity:.72}
+.archive-stack{position:relative;height:275px;padding:13px;background:#fff;box-shadow:8px 11px 0 rgba(20,59,86,.12);transform:rotate(2.2deg)}
+.archive-stack:before{content:"";position:absolute;z-index:-1;inset:5px -8px -7px 7px;border:1px solid rgba(20,59,86,.28);background:#f4ead5;transform:rotate(-4deg)}
+.archive-duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:min(94%,430px)}
+.archive-duo>div{position:relative;height:235px;padding:8px 8px 29px;background:#fff;box-shadow:5px 7px 0 rgba(20,59,86,.11)}
+.archive-duo>div:first-child{transform:rotate(-4deg)}.archive-duo>div:last-child{transform:translateY(34px) rotate(4deg)}
+.archive-duo>div span{position:absolute;left:9px;bottom:9px;color:#456779;font-size:6px;letter-spacing:1.1px}
+.archive-southampton,.archive-travel{height:355px}
+.archive-southampton img,.archive-travel img{position:absolute;width:71%;height:265px;padding:9px 9px 30px;background:#fff;box-shadow:6px 8px 0 rgba(20,59,86,.11)}
+.archive-southampton img:first-child,.archive-travel img:first-child{left:0;top:0;transform:rotate(-4deg)}
+.archive-southampton img:nth-child(2),.archive-travel img:nth-child(2){right:0;top:66px;transform:rotate(5deg)}
+.archive-southampton figcaption,.archive-travel figcaption{position:absolute;left:4px;bottom:0}
+.archive-travel img{filter:saturate(.72) sepia(.08)}
+.archive-bank .archive-stack{height:285px;transform:rotate(-2deg)}
+.archive-bank figcaption{padding-left:8px}
+.journey-final .journey-career-card{border-color:#d16f4d;background:#143b56;color:#fff;box-shadow:12px 14px 0 #d7b98c}
+.journey-final .journey-career-card>small,.journey-final .journey-growth,.journey-final .journey-career-card h3,.journey-final .journey-career-card>p:not(.journey-growth){color:#fff!important}
+.journey-final .journey-growth{color:#e88a64!important}.journey-final .journey-tags span{border-color:rgba(255,255,255,.45);color:#fff}
+.journey-actions{display:flex;flex-wrap:wrap;gap:22px;margin-top:30px}.journey-final .journey-link{color:#fff;border-color:#fff}
+
+@media (max-width:900px){
+  .journey-section{padding-bottom:100px}.journey-sequence{overflow-x:auto;justify-content:flex-start;margin-bottom:60px;padding:0 24px 8px}.journey-timeline{padding:0 24px 0 70px}.journey-route{left:39px}.journey-route:before{margin-left:-19px}.journey-stop{display:flex;flex-direction:column;align-items:stretch;min-height:0;margin-bottom:90px}.journey-pin{left:-31px;top:55px}.journey-career-card,.journey-left .journey-career-card,.journey-right .journey-career-card{width:100%;transform:none}.journey-archive,.journey-left .journey-archive,.journey-right .journey-archive{width:min(82%,430px);margin:32px auto 0;align-self:center}.archive-southampton,.archive-travel{height:355px}
+}
+@media (max-width:640px){
+  .journey-section:before{display:none}.journey-sequence{gap:7px;margin-inline:-20px}.journey-sequence span{padding:7px 9px;font-size:5.5px}.journey-timeline{padding:0 15px 0 44px}.journey-route{left:22px}.journey-route:before{font-size:18px}.journey-pin{left:-22px;width:14px;height:14px}.journey-career-card{padding:29px 23px 27px}.journey-career-card h3{font-size:23px}.journey-career-card>p:not(.journey-growth){font-size:10.5px}.journey-archive,.journey-left .journey-archive,.journey-right .journey-archive{width:94%}.archive-stack{height:210px}.archive-duo>div{height:180px}.archive-southampton,.archive-travel{height:290px}.archive-southampton img,.archive-travel img{height:215px}.archive-bank .archive-stack{height:215px}
+}
+@media (prefers-reduced-motion:reduce){.journey-route:before{position:relative;top:0}.journey-archive,.journey-career-card{transform:none!important}}
