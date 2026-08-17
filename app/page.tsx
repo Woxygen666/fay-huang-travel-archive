@@ -167,17 +167,43 @@ export default function Home() {
     const chapters = Array.from(document.querySelectorAll<HTMLElement>(".journey-chapter"));
     if (!chapters.length) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const chapter = entry.target as HTMLElement;
-        chapter.classList.add("is-visible");
-        setActiveJourney(Number(chapter.dataset.journeyIndex ?? 0));
-      });
-    }, { rootMargin: "0px 0px -12%", threshold: 0.08 });
+    let frame = 0;
+    const updateJourney = () => {
+      frame = 0;
+      const viewportAnchor = window.innerHeight * 0.42;
+      let closestIndex = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
 
-    chapters.forEach((chapter) => observer.observe(chapter));
-    return () => observer.disconnect();
+      chapters.forEach((chapter, index) => {
+        const rect = chapter.getBoundingClientRect();
+        const distance = rect.top <= viewportAnchor && rect.bottom >= viewportAnchor
+          ? 0
+          : Math.min(Math.abs(rect.top - viewportAnchor), Math.abs(rect.bottom - viewportAnchor));
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+
+        if (rect.top < window.innerHeight * 0.9 && rect.bottom > window.innerHeight * 0.1) {
+          chapter.dataset.journeyRevealed = "true";
+        }
+      });
+
+      setActiveJourney((current) => current === closestIndex ? current : closestIndex);
+    };
+    const requestUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateJourney);
+    };
+
+    updateJourney();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+    };
   }, []);
 
   useEffect(() => {
