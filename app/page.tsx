@@ -709,10 +709,40 @@ export default function Home() {
       <FlightDivider number="06" label={<>PACK WHAT<br />MATTERS</>} title="SKILLS" subtitle="what I carry" />
 
       <section id="skills" className="section skills-section">
-        <SectionTitle number="06" kicker="WHAT I CARRY WITH ME" title={<>A suitcase full of<br /><em>useful things.</em></>} />
-        <div className="suitcase">
-          <div className="suitcase-handle" /><div className="suitcase-inner">
-            {["CAMPAIGN", "BRANDING", "CONTENT", "PHOTOSHOP", "PREMIERE", "AFTER EFFECTS", "CAPCUT", "CANVA", "ENGLISH", "IELTS 7.0", "DATA REVIEW", "PROJECT MGMT"].map((skill, index) => <span key={skill} className={`sticker sticker-${(index % 6) + 1}`}>{index % 3 === 0 ? "✦ " : ""}{skill}</span>)}
+        <SectionTitle number="06" kicker="WHAT I CARRY" title={<>Packed for wherever<br /><em>comes next.</em></>} />
+        <p className="skills-lede">A working toolkit built across brand, content, campaigns and creative production.</p>
+        <div className="suitcase" aria-label="A vintage traveller's suitcase carrying Fay Huang's professional skills">
+          <div className="suitcase-handle"><i /></div>
+          <div className="suitcase-inner">
+            <i className="case-strap strap-left" aria-hidden="true" /><i className="case-strap strap-right" aria-hidden="true" />
+            <i className="case-corner corner-one" aria-hidden="true" /><i className="case-corner corner-two" aria-hidden="true" /><i className="case-corner corner-three" aria-hidden="true" /><i className="case-corner corner-four" aria-hidden="true" />
+            <span className="case-lock lock-one" aria-hidden="true" /><span className="case-lock lock-two" aria-hidden="true" />
+            <span className="case-maker">THE TRAVEL ARCHIVE · FIELD KIT · VOL. 01</span>
+
+            <div className="luggage-label label-brand" tabIndex={0}>
+              <small>FOUNDATIONAL ROUTE · 01</small><strong>BRAND<br />MARKETING</strong><span>Positioning · Communication</span>
+            </div>
+            <div className="luggage-label label-campaign" tabIndex={0}>
+              <small>GRAND HOTEL · CAMPAIGN DESK</small><i>H</i><strong>CAMPAIGN<br />PLANNING</strong><span>Concept · Execution · Review</span>
+            </div>
+            <div className="luggage-label label-content" tabIndex={0}>
+              <small>THROUGH TICKET · STORIES</small><strong>CONTENT &amp;<br />STORYTELLING</strong><span>Editorial · Social · Copy</span><b>06</b>
+            </div>
+            <div className="luggage-label label-creative" tabIndex={0}>
+              <small>BAGGAGE TAG · CREATIVE KIT</small><strong>CREATIVE<br />TOOLKIT</strong><span>Photoshop · Premiere<br />After Effects · Canva · CapCut</span><b aria-hidden="true" />
+            </div>
+            <div className="luggage-label label-data" tabIndex={0}>
+              <small>FIELD REPORT · INSIGHT UNIT</small><strong>DATA &amp;<br />INSIGHTS</strong><span>Performance Review<br />Audience Insight</span>
+            </div>
+            <div className="luggage-label label-english" tabIndex={0}>
+              <small>IMMIGRATION · CLEARED</small><strong>ENGLISH</strong><b>IELTS 7.0</b><span>PROFESSIONAL WORKING<br />PROFICIENCY</span><i>✦</i>
+            </div>
+            <div className="luggage-label label-project" tabIndex={0}><small>HANDLE WITH CARE</small><strong>PROJECT COORDINATION</strong><span>FAY · 06</span></div>
+
+            <span className="archive-stamp stamp-hgh" aria-hidden="true">HGH<br /><small>DEPARTED</small></span>
+            <span className="archive-stamp stamp-lhr" aria-hidden="true">LHR<br /><small>ARRIVED</small></span>
+            <span className="archive-stamp stamp-akl" aria-hidden="true">AKL · 24</span>
+            <span className="baggage-code" aria-hidden="true"><i />HGH 006 7A · FAY ARCHIVE</span>
           </div>
         </div>
       </section>
