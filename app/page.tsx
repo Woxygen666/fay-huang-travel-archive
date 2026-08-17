@@ -664,13 +664,43 @@ export default function Home() {
 
           <article className={`journey-chapter chapter-next ${activeJourney === 5 ? "is-current" : ""}`} data-journey-index="5">
             <header className="chapter-marker"><span>06</span><small>NOW</small></header>
-            <div className="next-ticket"><small>THE NEXT DESTINATION · OPEN</small><span>HGH → ?</span></div>
             <div className="next-copy">
               <p className="journey-growth">NEXT <em>· Where to next?</em></p>
               <h3>寻找品牌、内容与真实体验相遇的下一站。</h3>
               <p>希望继续走向 Brand Marketing / Content Marketing / Campaign Planning，尤其期待旅游、生活方式与国际化品牌环境，把对人和文化的观察转化为真正有人愿意参与、分享和记住的体验。</p>
             </div>
             <div className="journey-actions"><a href={asset("/fay-huang-resume-travel-marketing.pdf")} download>VIEW RESUME ↗</a><button onClick={() => travelTo("contact")}>LET&apos;S TALK ↗</button></div>
+            <button className="boarding-pass" onClick={() => travelTo("contact")} aria-label="打开下一章节并前往联系部分">
+              <span className="boarding-main">
+                <span className="boarding-heading"><i>THE TRAVEL ARCHIVE</i><strong>BOARDING PASS</strong><small>FAY-ARCHIVE-06</small></span>
+                <span className="boarding-fields boarding-fields-main">
+                  <span><small>PASSENGER</small><b>FAY HUANG</b></span>
+                  <span><small>FROM</small><b>HGH · HANGZHOU</b></span>
+                  <span><small>TO</small><b>WHEREVER NEXT</b></span>
+                </span>
+                <span className="boarding-route"><b>HGH</b><i><em>✈</em></i><strong>WHEREVER NEXT</strong></span>
+                <span className="boarding-direction"><small>DIRECTION</small><b>BRAND · CONTENT · MARKET</b></span>
+                <span className="boarding-meta">
+                  <span><small>JOURNEY</small><b>A JOURNEY IN PROGRESS · VOL. 01</b></span>
+                  <span><small>BOARDING</small><b>NOW</b></span>
+                  <span><small>STATUS</small><b>READY FOR DEPARTURE</b></span>
+                </span>
+              </span>
+              <span className="boarding-stub">
+                <span className="stub-title">NEXT<br />DESTINATION</span>
+                <span className="stub-fields">
+                  <span><small>PASSENGER</small><b>FAY HUANG</b></span>
+                  <span><small>FROM</small><b>HGH</b></span>
+                  <span><small>TO</small><b>OPEN</b></span>
+                  <span><small>GATE</small><b>NEXT</b></span>
+                  <span><small>BOARDING</small><b>NOW</b></span>
+                  <span><small>STATUS</small><b>READY</b></span>
+                </span>
+                <span className="ticket-barcode" aria-hidden="true" />
+                <small className="ticket-code">FAY · 06 · HGH</small>
+              </span>
+              <small className="boarding-hint">BOARD WHEN READY ↗</small>
+            </button>
             <p className="next-coordinate">30.2741° N · 120.1551° E<br /><span>READY FOR DEPARTURE</span></p>
           </article>
         </div>
