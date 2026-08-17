@@ -454,7 +454,7 @@ export default function Home() {
             <span>FEATURED 03</span><div><small>THEATRE CONTENT / SOCIAL MEDIA</small><strong>从舞台到屏幕：剧目内容宣发</strong><p>参与《敦煌奇妙夜》《无人生还》等剧目的内容发布与现场记录。</p></div><b>CONTENT MARKETING<br /><em>Social Media Intern</em></b><i>{openCase === "theatre" ? "−" : "↘"}</i>
           </button>
           <button className={openCase === "art" ? "active" : ""} onClick={() => setOpenCase(openCase === "art" ? "" : "art")} aria-expanded={openCase === "art"}>
-            <span>MINI CASE</span><div><small>EVENT CONTENT / ON-SITE EXECUTION</small><strong>“同绘童梦”少年艺术大展</strong><p>作品整理、展陈准备、现场执行与官方总结推送。</p></div><b>EVENT CONTENT<br /><em>On-site Operations</em></b><i>{openCase === "art" ? "−" : "↘"}</i>
+            <span>FEATURED 04</span><div><small>EVENT CONTENT / ON-SITE EXECUTION</small><strong>“同绘童梦”少年艺术大展</strong><p>作品整理、展陈准备、现场执行与官方总结推送。</p></div><b>EVENT CONTENT<br /><em>On-site Operations</em></b><i>{openCase === "art" ? "−" : "↘"}</i>
           </button>
         </div>
 
@@ -512,7 +512,7 @@ export default function Home() {
           </article>}
 
           {openCase === "art" && <article className="case-study mini-art-case">
-            <header><p>MINI CASE · EVENT CONTENT / ON-SITE EXECUTION</p><h3>“同绘童梦”少年艺术大展</h3><em>From exhibition floor to published story.</em><div className="art-case-intro">这次项目横跨展前准备、开幕现场与活动后的内容发布。我参与将约 300 幅青少年作品整理为可观看的展览，并把现场记录继续转化为一篇由官方公众号发布的活动回顾。</div></header>
+            <header><p>FEATURED CASE 04 · EVENT CONTENT / ON-SITE EXECUTION</p><h3>“同绘童梦”少年艺术大展</h3><em>From exhibition floor to published story.</em><div className="art-case-intro">这次项目横跨展前准备、开幕现场与活动后的内容发布。我参与将约 300 幅青少年作品整理为可观看的展览，并把现场记录继续转化为一篇由官方公众号发布的活动回顾。</div></header>
             <div className="mini-case-grid">
               <figure className="art-hero-photo"><div className="art-hero-frame"><img src={asset("/cases/art/exhibition-setup.jpg")} alt="同绘童梦少年艺术大展作品展墙与现场布置" /><span className="art-scale-label"><strong>~300 ARTWORKS</strong><i>YOUTH ART EXHIBITION</i></span></div><figcaption><strong>从作品到展墙</strong><p>展前参与参展作品的分类整理与展陈准备，核对作品信息，并协助将大量作品转化为清晰、连贯的现场观看动线。</p></figcaption></figure>
               <div className="art-case-copy">
