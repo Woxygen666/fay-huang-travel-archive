@@ -719,26 +719,27 @@ export default function Home() {
             <span className="case-lock lock-one" aria-hidden="true" /><span className="case-lock lock-two" aria-hidden="true" />
             <span className="case-maker">THE TRAVEL ARCHIVE · FIELD KIT · VOL. 01</span>
 
-            <div className="luggage-label label-brand" tabIndex={0}>
-              <small>FOUNDATIONAL ROUTE · 01</small><strong>BRAND<br />MARKETING</strong><span>Positioning · Communication</span>
-            </div>
             <div className="luggage-label label-campaign" tabIndex={0}>
-              <small>GRAND HOTEL · CAMPAIGN DESK</small><i>H</i><strong>CAMPAIGN<br />PLANNING</strong><span>Concept · Execution · Review</span>
+              <small>CAMPAIGN DEPT. · FROM IDEA TO EXECUTION</small><i>H</i><strong>CAMPAIGN<br />PLANNING</strong><span className="skill-lines"><b>Concept · Proposal · PPT</b>Execution · Review</span>
             </div>
             <div className="luggage-label label-content" tabIndex={0}>
-              <small>THROUGH TICKET · STORIES</small><strong>CONTENT &amp;<br />STORYTELLING</strong><span>Editorial · Social · Copy</span><b>06</b>
+              <small>SOCIAL DESK · CONTENT IN MOTION</small><strong>CONTENT &amp; SOCIAL</strong><span className="skill-lines"><b>Xiaohongshu · Douyin · WeChat</b>Copywriting · Short Video · Content Planning</span><b className="ticket-number">06</b>
             </div>
             <div className="luggage-label label-creative" tabIndex={0}>
-              <small>BAGGAGE TAG · CREATIVE KIT</small><strong>CREATIVE<br />TOOLKIT</strong><span>Photoshop · Premiere<br />After Effects · Canva · CapCut</span><b aria-hidden="true" />
+              <small>BAGGAGE TAG · VISUAL</small><strong>PHOTOSHOP</strong><b className="tool-name">FIGMA · CANVA</b><span>Visual Design · Layout · Prototyping</span><i aria-hidden="true" />
+            </div>
+            <div className="luggage-label label-video" tabIndex={0}>
+              <small>ADMIT ONE · VIDEO PRODUCTION</small><strong>PREMIERE</strong><b className="tool-name">AFTER EFFECTS</b><span>CapCut · Editing · Motion · Short-form</span><i className="admit-number">01</i>
             </div>
             <div className="luggage-label label-data" tabIndex={0}>
-              <small>FIELD REPORT · INSIGHT UNIT</small><strong>DATA &amp;<br />INSIGHTS</strong><span>Performance Review<br />Audience Insight</span>
+              <small>FIELD REPORT · INSIGHT UNIT</small><strong>DATA &amp; INSIGHTS</strong><span className="skill-lines"><b>Platform Analytics · Campaign Review</b>Audience Insight · Performance Tracking</span>
             </div>
             <div className="luggage-label label-english" tabIndex={0}>
               <small>IMMIGRATION · CLEARED</small><strong>ENGLISH</strong><b>IELTS 7.0</b><span>PROFESSIONAL WORKING<br />PROFICIENCY</span><i>✦</i>
             </div>
-            <div className="luggage-label label-project" tabIndex={0}><small>HANDLE WITH CARE</small><strong>PROJECT COORDINATION</strong><span>FAY · 06</span></div>
+            <div className="luggage-label label-ai" tabIndex={0}><small>AI-ASSISTED WORKFLOW</small><strong>CHATGPT · CODEX · GEMINI</strong><span>Research · Ideation · Prototyping</span></div>
 
+            <span className="skill-axis-stamp" aria-hidden="true">BRAND · CONTENT · CAMPAIGN<small>PROFESSIONAL ROUTE</small></span>
             <span className="archive-stamp stamp-hgh" aria-hidden="true">HGH<br /><small>DEPARTED</small></span>
             <span className="archive-stamp stamp-lhr" aria-hidden="true">LHR<br /><small>ARRIVED</small></span>
             <span className="archive-stamp stamp-akl" aria-hidden="true">AKL · 24</span>
