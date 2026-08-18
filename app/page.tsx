@@ -365,7 +365,7 @@ export default function Home() {
               <p className="passport-page-label">PROFESSIONAL <span>· 职业档案</span></p>
               <div className="professional-head">
                 <div><h3>FAY<br /><em>HUANG</em></h3><p>MARKETING · CONTENT · CREATIVE</p></div>
-                <div className="passport-photo"><img src={asset("/resume-profile-source.png")} alt="黄菲洋" /></div>
+                <div className="passport-photo"><img src={asset("/resume-profile.jpg")} alt="黄菲洋证件照" /></div>
               </div>
               <div className="professional-fields">
                 <span><small>BASED IN · 常驻</small>Hangzhou, China</span>
