@@ -114,6 +114,7 @@ export default function Home() {
   const [openCase, setOpenCase] = useState<string>("tea");
   const [transitioning, setTransitioning] = useState(false);
   const [activeJourney, setActiveJourney] = useState(0);
+  const [activeBankPhoto, setActiveBankPhoto] = useState<"primary" | "secondary">("primary");
   const heroRef = useRef<HTMLElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const selectedStop = mapMode === "world"
@@ -404,6 +405,7 @@ export default function Home() {
             <div className="map-caption"><small>TRAVEL LOG</small><b>{mapMode === "world" ? "14" : "21"}</b><span>{mapMode === "world" ? <>COUNTRIES<br />AND COUNTING</> : <>REGIONS<br />ACROSS CHINA</>}</span></div>
             {mapMode === "china" && <small className="map-credit">ILLUSTRATED FOR FAY&apos;S ARCHIVE</small>}
           </div>
+          <p className="mobile-map-note">SELECT A DESTINATION BELOW · TAP TO OPEN ITS ARCHIVE ↓</p>
           <aside className="story-card">
             <div className="story-photo"><img src={asset(`/travel/travel-${String(selectedStop.photos[0][0]).padStart(3,"0")}.jpg`)} alt={`${selectedStop.country}旅行照片`} /><small>{selectedStop.photos[0][1]} · FAY&apos;S ARCHIVE</small></div>
             <p className="stamp">PASSPORT<br /><b>FAY ARCHIVE</b></p>
@@ -655,10 +657,24 @@ export default function Home() {
               <button className="journey-link" onClick={() => openJourneyCase("bank")}>EXPLORE CASE ↗</button>
             </div>
             <aside className="bank-metric"><strong>1,000+</strong><span>CUSTOMER TOUCHPOINTS<br /><small>ACROSS MULTIPLE CHANNELS</small></span></aside>
-            <div className="bank-photo-stack" aria-label="杭州银行内部讲师大赛照片，悬停或聚焦可翻阅">
-              <figure className="event-photo event-primary" tabIndex={0}><img src={asset("/journey/trainer-stage.jpg")} alt="杭州银行内部讲师大赛团队赛现场" /><figcaption>ON STAGE · PRESENTATION</figcaption></figure>
-              <figure className="event-photo event-secondary" tabIndex={0}><img src={asset("/journey/trainer-team.jpg")} alt="内部讲师大赛团队合照" /><figcaption>TEAM 3RD PLACE · HANGZHOU BANK</figcaption></figure>
-              <small>HOVER TO FLIP THROUGH ↗</small>
+            <div className="bank-photo-stack" aria-label="杭州银行内部讲师大赛照片，可点击或聚焦翻阅">
+              <figure
+                className={`event-photo event-primary ${activeBankPhoto === "primary" ? "is-active" : ""}`}
+                tabIndex={0}
+                role="button"
+                aria-pressed={activeBankPhoto === "primary"}
+                onClick={() => setActiveBankPhoto("primary")}
+                onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActiveBankPhoto("primary"); } }}
+              ><img src={asset("/journey/trainer-stage.jpg")} alt="杭州银行内部讲师大赛团队赛现场" /><figcaption>ON STAGE · PRESENTATION</figcaption></figure>
+              <figure
+                className={`event-photo event-secondary ${activeBankPhoto === "secondary" ? "is-active" : ""}`}
+                tabIndex={0}
+                role="button"
+                aria-pressed={activeBankPhoto === "secondary"}
+                onClick={() => setActiveBankPhoto("secondary")}
+                onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActiveBankPhoto("secondary"); } }}
+              ><img src={asset("/journey/trainer-team.jpg")} alt="内部讲师大赛团队合照" /><figcaption>TEAM 3RD PLACE · HANGZHOU BANK</figcaption></figure>
+              <small>SELECT A PHOTO TO BRING FORWARD ↗</small>
             </div>
           </article>
 
