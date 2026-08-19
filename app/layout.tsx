@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fay-huang-travel-archive.cuddly-thyme-8822.chatgpt.site";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fay-huang-travel-archive.vercel.app";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const imageUrl = `${siteUrl}${basePath}/og.jpg`;
 
