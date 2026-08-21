@@ -357,7 +357,7 @@ export default function Home() {
               </div>
               <div className="passport-numbers">
                 <small>BY THE NUMBERS · 数字里的我</small>
-                <p><b>10+</b> Places <i>/</i> <b>5K+</b> Followers <i>/</i> <b>100K+</b> Views <i>/</i> <b>7.0</b> IELTS</p>
+                <p><b>14</b> Countries <i>/</i> <b>5K+</b> Followers <i>/</i> <b>1M+</b> Views <i>/</i> <b>7.0</b> IELTS</p>
               </div>
             </section>
 
